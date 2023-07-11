@@ -29,7 +29,7 @@ export class LoginComponent {
         localStorage.setItem('token',res.token);
         this.isLogin=true,
         alert("LoggedIn Successfully!")
-        this.route.navigate(['.'])
+        this.route.navigate(['./home'])
       },
       error:(e)=>console.error(e)
     });

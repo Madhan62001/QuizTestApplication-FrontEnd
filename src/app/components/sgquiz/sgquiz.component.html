@@ -1,0 +1,20 @@
+<div *ngIf="!this.hide">
+    <mat-card-header>Question</mat-card-header><br>
+    <mat-card-content>
+        <form [formGroup]="myForm" (ngSubmit)="submit()">
+            <input formControlName="question" type="text" placeholder="Enter your Question" required=""/><br><br>
+            <input formControlName="answer1" type="text" placeholder="Enter Option 1" required=""/><br><br>
+            <input formControlName="answer2" type="text" placeholder="Enter Option 2" required=""/><br><br>
+            <input formControlName="answer3" type="text" placeholder="Enter Option 3" required=""/><br><br>
+            <input formControlName="answer4" type="text" placeholder="Enter Option 4" required=""/><br><br>
+            <input formControlName="cAnswer" type="text" placeholder="Enter the Correct Option" required=""/><br><br>
+            <button type="submit">Add Another!</button><br><br>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="this.finished()">Finished!</button>
+    </mat-card-actions>
+</div>
+<div *ngIf="this.hide">
+    <button (click)="this.quiz()">Get Your Quiz</button>
+</div>

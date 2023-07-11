@@ -21,17 +21,14 @@ export class ConnectionsService {
     let api_URL=url+'/login';
     return this.http.post(api_URL,data);
   }  
+
   logout(): Observable<any> {
     let api_URL=url+'/logout';
-    return this.http.post<any>(api_URL,{});
-  }
-  getUserProfile(): Observable<any> {
-    let api_URL=url+'/profile';
-    return this.http.get(api_URL);
-  }
+    return this.http.post<any>(api_URL,{},{withCredentials:true});
+  } 
 
-  // gtoken(data:any):Observable<any>{
-  //   let api_URL=url+'/gverify';
-  //   return this.http.post(api_URL,data);
-  // }
+  passuserquiz(data: any):Observable<any>{
+    let api_URL=url+'/uquiz';
+    return this.http.post(api_URL,data,{withCredentials:true} );
+  }
 }

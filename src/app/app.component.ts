@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ConnectionsService } from './auth/connections.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,15 @@ import { ConnectionsService } from './auth/connections.service';
 })
 export class AppComponent {
   title = 'quizkr';
-  constructor(private connection:ConnectionsService){}
+  constructor(private connection:ConnectionsService, private route: Router){}
+
   logout():void{
-    console.log("Function!")
     this.connection.logout().subscribe({
       next:(res)=>{
         console.log(res);
-        alert("Logged Out!")
+        localStorage.getItem("token");
+        localStorage.removeItem("token");
+        alert("Logged Out!");
       },
       error:(e)=>console.error(e)
     });

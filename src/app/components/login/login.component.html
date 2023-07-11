@@ -1,6 +1,6 @@
 <div class = 'row m-0 w-100'>
     <div class = 'col-md-4 offset-4 mt-5' *ngIf = '!this.isLogin'>
-    <h4>Register</h4>
+    <h4>Login</h4>
     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
         <div class = 'form-group'>
             <input class = 'form-control' type = "text" name = "username" placeholder = "Username" [(ngModel)]="form.userName" #userName="ngModel" required>
