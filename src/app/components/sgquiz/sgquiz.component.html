@@ -16,5 +16,6 @@
     </mat-card-actions>
 </div>
 <div *ngIf="this.hide">
+    <input type="text" placeholder="Enter Your Name!" [(ngModel)]="this.uName" required/>
     <button (click)="this.quiz()">Get Your Quiz</button>
 </div>

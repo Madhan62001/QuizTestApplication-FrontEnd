@@ -31,4 +31,14 @@ export class ConnectionsService {
     let api_URL=url+'/uquiz';
     return this.http.post(api_URL,data,{withCredentials:true} );
   }
+
+  getQuestions():Observable<any>{
+    let api_URL=url+'/ques';
+    return this.http.post(api_URL,{},{withCredentials:true});
+  }
+
+  save(data:any):Observable<any>{
+    let api_URL=url+'/save';
+    return this.http.post(api_URL,data,{withCredentials:true});
+  }
 }

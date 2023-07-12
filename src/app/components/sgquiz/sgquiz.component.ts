@@ -11,12 +11,8 @@ import { Router } from '@angular/router';
 export class SgquizComponent {
   public myForm: FormGroup;
   hide:boolean=false;
-  static qarr:String[]=[];
-  static o1:String[]=[];
-  static o2:String[]=[];
-  static o3:String[]=[];
-  static o4:String[]=[];
-  static ca:String[]=[];
+  static questions:any[]=[];
+  uName:string="";
   constructor(private fb: FormBuilder, private cons:ConnectionsService, private route: Router) {
     this.myForm = fb.group({
       question: [],
@@ -27,31 +23,44 @@ export class SgquizComponent {
       cAnswer:[]
     })
   }
+  check(ans: any,s: string): any{
+    if(ans===this.myForm.controls[s].value){
+      let d={
+        text: this.myForm.controls[s].value,
+        correct: true
+      }
+      return d;
+    }else{
+      let d={
+        text: this.myForm.controls[s].value,
+        correct: false
+      }
+      return d;
+    }
+  }
+  assign():void{
+    let options:any[]=[];
+    let ans=this.myForm.controls['cAnswer'].value;
+    options.push(this.check(ans,"answer1"));
+    options.push(this.check(ans,"answer2"));
+    options.push(this.check(ans,"answer3"));
+    options.push(this.check(ans,"answer4"));
+    const data={
+      questionText: this.myForm.controls['question'].value,
+      options      
+    }
+    SgquizComponent.questions.push(data);
+    //console.log(SgquizComponent.questions);
+  }
   submit() {
-    SgquizComponent.qarr.push(this.myForm.controls['question'].value);
-    SgquizComponent.o1.push(this.myForm.controls['answer1'].value);
-    SgquizComponent.o2.push(this.myForm.controls['answer2'].value);
-    SgquizComponent.o3.push(this.myForm.controls['answer3'].value);
-    SgquizComponent.o4.push(this.myForm.controls['answer4'].value);
-    SgquizComponent.ca.push(this.myForm.controls['cAnswer'].value);
+    this.assign();
     this.myForm.reset();
   }
   
   finished():void{
-    //console.log("Comes Here!")
-    SgquizComponent.qarr.push(this.myForm.controls['question'].value);
-    SgquizComponent.o1.push(this.myForm.controls['answer1'].value);
-    SgquizComponent.o2.push(this.myForm.controls['answer2'].value);
-    SgquizComponent.o3.push(this.myForm.controls['answer3'].value);
-    SgquizComponent.o4.push(this.myForm.controls['answer4'].value);
-    SgquizComponent.ca.push(this.myForm.controls['cAnswer'].value);
+    this.assign();
     const data={
-      qarr:SgquizComponent.qarr,
-      o1:SgquizComponent.o1,
-      o2:SgquizComponent.o2,
-      o3:SgquizComponent.o3,
-      o4:SgquizComponent.o4,
-      ca:SgquizComponent.ca
+      questions: SgquizComponent.questions
     }
     this.cons.passuserquiz(data).subscribe({
       next:(res)=>{
@@ -66,6 +75,7 @@ export class SgquizComponent {
   }
   
   quiz():void{
+    localStorage.setItem('UName',this.uName);
     this.route.navigate(['./quiz']);
   }
 }

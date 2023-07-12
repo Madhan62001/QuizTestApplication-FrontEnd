@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
 import { MatCardModule } from '@angular/material/card';
@@ -17,6 +18,7 @@ import { AiquizComponent } from './components/aiquiz/aiquiz.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { ChangeBgDirective } from './change-bg.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { QuizComponent } from './components/quiz/quiz.component';
     SgquizComponent,
     AiquizComponent,
     HomeComponent,
-    QuizComponent
+    QuizComponent,
+    ChangeBgDirective
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { QuizComponent } from './components/quiz/quiz.component';
       }
     }),
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [
     ConnectionsService,
