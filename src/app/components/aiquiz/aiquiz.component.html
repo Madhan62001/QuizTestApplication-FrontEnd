@@ -1,1 +1,41 @@
-<p>aiquiz works!</p>
+<!-- <div *ngIf="!this.isLoading"> -->
+<div>
+<h1 style="text-align: center;">Select Topics for Quiz Generation</h1><br><br>
+<section class="articles">
+  <article (click)="this.ai()">
+    <div class="article-wrapper">
+      <figure>
+        <img src="https://picsum.photos/id/1011/800/450" alt="" />
+      </figure>
+      <div class="article-body">
+        <h2>Artificial Intelligence</h2>
+      </div>
+    </div>
+  </article>
+  <article (click)="this.cs()">
+    <div class="article-wrapper">
+      <figure>
+        <img src="https://picsum.photos/id/1005/800/450" alt="" />
+      </figure>
+      <div class="article-body">
+        <h2>Cyber Security</h2>
+      </div>
+    </div>
+  </article>
+  <article (click)="this.wd()">
+    <div class="article-wrapper">
+      <figure>
+        <img src="https://picsum.photos/id/103/800/450" alt="" />
+      </figure>
+      <div class="article-body">
+        <h2>Web Development</h2>
+      </div>
+    </div>
+  </article>
+  <button style="position: relative;" (click)="this.submit()">Proceed to Quiz</button>
+</section>
+</div>
+<!-- <div>
+  <input type="text" placeholder="Enter Your Name!" [(ngModel)]="this.uName" required/>
+  <button (click)="this.quiz()">Get Your Quiz</button>
+</div> -->

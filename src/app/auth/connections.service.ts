@@ -38,7 +38,13 @@ export class ConnectionsService {
   }
 
   save(data:any):Observable<any>{
+    //Quiz Attendees Info
     let api_URL=url+'/save';
+    return this.http.post(api_URL,data,{withCredentials:true});
+  }
+
+  aiInfo(data:any):Observable<any>{
+    let api_URL=url+'/ai';
     return this.http.post(api_URL,data,{withCredentials:true});
   }
 }
