@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators,  AbstractControl, ValidationErrors } from '@angular/forms';
 import { ConnectionsService } from 'src/app/auth/connections.service';
 
 @Component({
@@ -8,28 +9,27 @@ import { ConnectionsService } from 'src/app/auth/connections.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  isLogin: boolean=false;
-  form: any={
-    userName: null,
-    emailID: null,
-    password: null,
-    cpassword: null
-  }
+  userName:string="";
+  emailID:string="";
+  password:string="";
+  cpassword:string="";
   errorMessage = '';
-  constructor(private route:Router, private connection: ConnectionsService){ }
-  onSubmit(): void{
-    if(this.form.password==this.form.cpassword){
+  logname:string="";
+  logpass:string="";
+  isLoggedIn:string="false";
+  constructor(private route:Router, private connection: ConnectionsService){  }
+
+  register(): void{
+    if(this.password==this.cpassword){
       const data= {
-        userName: this.form.userName,
-        emailID: this.form.emailID,
-        password: this.form.password
+        userName: this.userName,
+        emailID: this.emailID,
+        password: this.password
       };
       this.connection.create(data).subscribe({
         next: (res)=>{
           console.log(res.message),
-          this.isLogin=true,
           alert("Registered Successfully")
-          this.route.navigate(['../login'])
         },
         error:(e)=>console.error(e)
       });
@@ -38,4 +38,24 @@ export class RegisterComponent {
       alert("Retype password doesn't match!");
     }
   }
+
+  login():void{
+    console.log("Came Here!")
+    const data={
+      userName: this.logname,
+      password: this.logpass
+    };
+    this.connection.login(data).subscribe({
+      next: (res)=>{
+        this.isLoggedIn="true";
+        console.log(res);
+        localStorage.setItem('token',res.token);
+        localStorage.setItem('isLog',this.isLoggedIn);
+        alert("LoggedIn Successfully!")
+        this.route.navigate([''])
+      },
+      error:(e)=>console.error(e)
+    });
+  }
+
 }

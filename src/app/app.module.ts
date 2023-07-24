@@ -6,7 +6,6 @@ import { MatCardModule } from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -19,12 +18,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { ChangeBgDirective } from './change-bg.directive';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent,
     SgquizComponent,
     AiquizComponent,
     HomeComponent,
@@ -45,7 +44,8 @@ import { ChangeBgDirective } from './change-bg.directive';
     }),
     MatCardModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    NgbModule
   ],
   providers: [
     ConnectionsService,

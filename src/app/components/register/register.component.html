@@ -1,41 +1,103 @@
-<div class = 'row m-0 w-100'>
-    <div class = 'col-md-4 offset-4 mt-5' *ngIf = '!this.isLogin'>
-    <h4>Register</h4>
-    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-        <div class = 'form-group'>
-            <input class = 'form-control' type = "text" name = "username" placeholder = "Username" [(ngModel)]="form.userName" #userName="ngModel" required>
-            <div class="alert-danger" *ngIf="userName.errors && f.submitted">
-                <div *ngIf="userName.errors?.['required']">Username is required</div>
-                <div *ngIf="userName.errors?.['minlength']">
-                    Username must be at least 3 characters
-                </div>
-                <div *ngIf="userName.errors?.['maxlength']">
-                    Username must be at most 20 characters
-                </div>
-            </div>
-        </div>
-        <div class = 'form-group'>
-            <input class = 'form-control' type = "email" name = "email" placeholder = "Email" [(ngModel)]="form.emailID" #emailID="ngModel" required>
-            <div class="alert-danger" *ngIf="emailID.errors && f.submitted">
-                <div *ngIf="emailID.errors?.['required']">EmailID is required</div>
-                <div *ngIf="emailID.errors?.['emailID']">
-                    Email Must Be Valid
-                </div>
-            </div>
-        </div>
-        <div class = 'form-group'>
-            <input class = 'form-control' type = "password" name = "password" placeholder = "Password" [(ngModel)]="form.password" #password="ngModel" required>
-            <div class="alert-danger" *ngIf="password.errors && f.submitted">
-                <div *ngIf="password.errors?.['required']">Password is required</div>
-                <div *ngIf="password.errors?.['minlength']">
-                    Password must be at least 6 characters
-                </div>
-            </div>
-        </div>
-        <div class = 'form-group'>
-        <input class = 'form-control' type = "password" name = "password" placeholder = "Confirm Password" [(ngModel)]="form.cpassword" #cpassword="ngModel" required>
-        </div>
-        <input class= 'btn btn-outline-info' type = "submit" value = "Register">
-    </form>
-</div>
-</div>
+<head>
+  <meta charset="UTF-8">
+  <title>Quizkr</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
+</head>
+<body>
+<div class="section">
+		<div class="container">
+			<div class="row full-height justify-content-center">
+				<div class="col-12 text-center align-self-center py-5">
+					<div class="section pb-5 pt-5 pt-sm-2 text-center">
+						<h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
+			          	<input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
+			          	<label for="reg-log"></label>
+						<div class="card-3d-wrap mx-auto">
+							<div class="card-3d-wrapper">
+								<div class="card-front">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3">Log In</h4>
+											<form (ngSubmit)="this.login()" #loginForm="ngForm" novalidate>
+                                                <div class="form-group">
+                                                    <input type="text" name="logname" class="form-style" placeholder="Your User Name" id="logname"
+                                                        [(ngModel)]="logname" ngModel #lognameInput="ngModel" autocomplete="off" required>
+                                                    <i class="input-icon uil uil-at"></i>
+                                                    <div *ngIf="lognameInput.invalid && (lognameInput.dirty || lognameInput.touched)"
+                                                        class="error-message">
+                                                        User Name is required.
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass"
+                                                        [(ngModel)]="logpass" ngModel #logpassInput="ngModel" autocomplete="off" required>
+                                                    <i class="input-icon uil uil-lock-alt"></i>
+                                                    <div *ngIf="logpassInput.invalid && (logpassInput.dirty || logpassInput.touched)"
+                                                        class="error-message">
+                                                        Password is required.
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn mt-4" [disabled]="loginForm.invalid">Submit</button>
+                                                <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
+                                            </form>
+                                        </div>
+			      					</div>
+			      				</div>
+								<div class="card-back">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3">Sign Up</h4>
+											<form (ngSubmit)="register()" #registrationForm="ngForm" novalidate>
+                                                <div class="form-group">
+                                                    <input type="text" name="userName" class="form-style" placeholder="Your Full Name" id="userName"
+                                                        [(ngModel)]="userName" ngModel #userNameInput="ngModel" required>
+                                                    <i class="input-icon uil uil-user"></i>
+                                                    <div *ngIf="userNameInput.invalid && (userNameInput.dirty || userNameInput.touched)"
+                                                        class="error-message">
+                                                        Full Name is required.
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="email" name="emailID" class="form-style" placeholder="Your Email" id="emailID"
+                                                        [(ngModel)]="emailID" ngModel #emailIDInput="ngModel" required email>
+                                                    <i class="input-icon uil uil-at"></i>
+                                                    <div *ngIf="emailIDInput.invalid && (emailIDInput.dirty || emailIDInput.touched)"
+                                                        class="error-message">
+                                                        Please enter a valid email address.
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="password" name="password" class="form-style" placeholder="Your Password" id="password"
+                                                        [(ngModel)]="password" ngModel #passwordInput="ngModel" required>
+                                                    <i class="input-icon uil uil-lock-alt"></i>
+                                                    <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="error-message">
+                                                        <div *ngIf="passwordInput.hasError('required')">Password is required.</div>
+                                                        <!-- <div *ngIf="passwordInput.hasError('strongPassword')">Password must contain at least 8 characters with at least one uppercase letter, one lowercase letter, one number, and one special character.</div> -->
+                                                    </div>
+                                                </div>                                        
+                                                <div class="form-group mt-2">
+                                                    <input type="password" name="cpassword" class="form-style" placeholder="Confirm Password"
+                                                        id="cpassword" [(ngModel)]="cpassword" ngModel #cpasswordInput="ngModel" required>
+                                                    <i class="input-icon uil uil-lock-alt"></i>
+                                                    <div *ngIf="cpasswordInput.invalid && (cpasswordInput.dirty || cpasswordInput.touched)"
+                                                        class="error-message">
+                                                        Confirm Password is required.
+                                                    </div>
+                                                    <div *ngIf="password !== cpassword" class="error-message">
+                                                        Passwords do not match.
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn mt-4" [disabled]="registrationForm.invalid">Submit</button>
+                                            </form>
+                                        </div>
+			      					</div>
+			      				</div>
+			      			</div>
+			      		</div>
+			      	</div>
+		      	</div>
+	      	</div>
+	    </div>
+	</div>
+</body>

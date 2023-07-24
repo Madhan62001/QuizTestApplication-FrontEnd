@@ -30,7 +30,7 @@ export class QuizComponent {
   }
   ngDoCheck():void{
     if(this.dupCompleted){
-      console.log("Camme Here")
+      //console.log("Camme Here")
       const d={
         name: this.name,
         points: this.points
@@ -48,7 +48,7 @@ export class QuizComponent {
   }
   start():void {
     this.conn.getQuestions().subscribe(res => {
-      console.log(res.message);
+      //console.log(res.message);
         this.questionList = res.message;
     })
   }

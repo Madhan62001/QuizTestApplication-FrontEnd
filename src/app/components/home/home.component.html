@@ -1,2 +1,38 @@
-<button *ngIf='!this.but' (click)="this.aiquiz()" >AI Quiz</button>
-<button *ngIf='!this.but' (click)="this.sgquiz()">Generate Your Quiz</button>
+<header class="p-1 text-bg-dark">
+  <div class="container-fluid">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <h1>QuizkR</h1>
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="" class="nav-link px-1 text-secondary">Home</a></li><br>
+        <li><a href="#" class="nav-link px-1 text-white">Pricing</a></li><br>
+        <li><a href="#" class="nav-link px-1 text-white">About</a></li>
+      </ul>
+      <a routerLink="register" class="nav-link px-1 text-white" style="padding-right: 25px;">SignIn/Up</a>
+      <a (click)="this.logout()" class="nav-link px-1 text-white">LogOut</a>
+    </div>
+  </div>
+</header>
+<body>
+  <button (click)="this.aiquiz()">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      AI Quiz
+  </button>
+  <button (click)="this.sgquiz()">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Generate Your Quiz
+  </button>
+</body>
+<footer class="container-fluid">
+  <div class="col-md-4 d-flex align-items-center">
+    <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+      <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+    </a>
+    <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Company, Inc</span>
+  </div>
+</footer>

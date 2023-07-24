@@ -1,5 +1,4 @@
-<!-- <div *ngIf="!this.isLoading"> -->
-<div>
+<div *ngIf="!this.isLoading">
 <h1 style="text-align: center;">Select Topics for Quiz Generation</h1><br><br>
 <section class="articles">
   <article (click)="this.ai()">
@@ -35,7 +34,7 @@
   <button style="position: relative;" (click)="this.submit()">Proceed to Quiz</button>
 </section>
 </div>
-<!-- <div>
+<div *ngIf="this.isLoading">
   <input type="text" placeholder="Enter Your Name!" [(ngModel)]="this.uName" required/>
   <button (click)="this.quiz()">Get Your Quiz</button>
-</div> -->
+</div>

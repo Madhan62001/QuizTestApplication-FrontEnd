@@ -28,6 +28,7 @@ export class AiquizComponent {
     }
     this.conn.aiInfo(data).subscribe({
       next:(res)=>{
+        this.isLoading=true;
         console.log(res);
       },error:(e)=>{
         console.log(e);

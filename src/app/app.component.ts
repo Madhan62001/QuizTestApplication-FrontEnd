@@ -11,15 +11,15 @@ export class AppComponent {
   title = 'quizkr';
   constructor(private connection:ConnectionsService, private route: Router){}
 
-  logout():void{
-    this.connection.logout().subscribe({
-      next:(res)=>{
-        console.log(res);
-        localStorage.getItem("token");
-        localStorage.removeItem("token");
-        alert("Logged Out!");
-      },
-      error:(e)=>console.error(e)
-    });
-  }
+  // logout():void{
+  //   this.connection.logout().subscribe({
+  //     next:(res)=>{
+  //       console.log(res);
+  //       localStorage.getItem("token");
+  //       localStorage.removeItem("token");
+  //       alert("Logged Out!");
+  //     },
+  //     error:(e)=>console.error(e)
+  //   });
+  // }
 }
