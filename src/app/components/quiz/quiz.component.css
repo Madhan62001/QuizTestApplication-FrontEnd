@@ -3,7 +3,9 @@
     margin: 0 auto;
     padding: 10px;
 }
-
+header{
+    height: 100px;
+}
 li {
     list-style-type: none;
     cursor: pointer;

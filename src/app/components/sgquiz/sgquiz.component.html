@@ -1,3 +1,17 @@
+<header class="p-1 text-bg-dark">
+    <div class="container-fluid">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <h1>QuizkR</h1>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="" class="nav-link px-1 text-secondary">Home</a></li><br>
+          <li><a href="#" class="nav-link px-1 text-white">Pricing</a></li><br>
+          <li><a href="#" class="nav-link px-1 text-white">About</a></li>
+        </ul>
+        <a routerLink="register" class="nav-link px-1 text-white" style="padding-right: 25px;">SignIn/Up</a>
+        <a (click)="this.logout()" class="nav-link px-1 text-white">LogOut</a>
+      </div>
+    </div>
+  </header>
 <div *ngIf="!this.hide">
     <mat-card-header>Question</mat-card-header><br>
     <mat-card-content>
@@ -15,7 +29,10 @@
         <button (click)="this.finished()">Finished!</button>
     </mat-card-actions>
 </div>
-<div *ngIf="this.hide">
+<div *ngIf="this.hide && this.tolink">
     <input type="text" placeholder="Enter Your Name!" [(ngModel)]="this.uName" required/>
     <button (click)="this.quiz()">Get Your Quiz</button>
+</div>
+<div *ngIf="!this.tolink">
+  <h2>Link To Quiz: {{this.link}}</h2>
 </div>

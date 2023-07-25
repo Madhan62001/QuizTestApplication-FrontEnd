@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class SgquizComponent {
   public myForm: FormGroup;
   hide:boolean=false;
+  tolink:boolean=true;
+  link:string="http://localhost:4200/quiz"
   static questions:any[]=[];
   uName:string="";
   constructor(private fb: FormBuilder, private cons:ConnectionsService, private route: Router) {
@@ -65,6 +67,7 @@ export class SgquizComponent {
     this.cons.passuserquiz(data).subscribe({
       next:(res)=>{
         console.log(res);
+        this.link=this.link+'/'+res.id;
         this.hide=true;        
       },
       error:(e)=>{
@@ -75,7 +78,20 @@ export class SgquizComponent {
   }
   
   quiz():void{
+    this.tolink=false;
     localStorage.setItem('UName',this.uName);
-    this.route.navigate(['./quiz']);
+    //this.route.navigate(['./quiz']);
+  }
+
+  logout():void{
+    this.cons.logout().subscribe({
+      next:(res)=>{
+        console.log(res);
+        localStorage.getItem("token");
+        localStorage.removeItem("token");
+        alert("Logged Out!");
+      },
+      error:(e)=>console.error(e)
+    });
   }
 }
