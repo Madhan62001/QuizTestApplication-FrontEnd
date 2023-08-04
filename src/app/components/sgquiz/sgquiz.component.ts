@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ConnectionsService } from 'src/app/auth/connections.service';
 import { Router } from '@angular/router';
@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 })
 export class SgquizComponent {
   public myForm: FormGroup;
+  isLogged:boolean=false;
   hide:boolean=false;
   tolink:boolean=true;
-  link:string="http://localhost:4200/quiz"
+  link:string=""
   static questions:any[]=[];
-  uName:string="";
   constructor(private fb: FormBuilder, private cons:ConnectionsService, private route: Router) {
     this.myForm = fb.group({
       question: [],
@@ -24,6 +24,9 @@ export class SgquizComponent {
       answer4: [],
       cAnswer:[]
     })
+  }
+  ngOnInit(){
+    this.isLogged= JSON.parse(localStorage.getItem('isLoggedIn') || '{}');
   }
   check(ans: any,s: string): any{
     if(ans===this.myForm.controls[s].value){
@@ -67,7 +70,7 @@ export class SgquizComponent {
     this.cons.passuserquiz(data).subscribe({
       next:(res)=>{
         console.log(res);
-        this.link=this.link+'/'+res.id;
+        this.link=res.id;
         this.hide=true;        
       },
       error:(e)=>{
@@ -76,19 +79,26 @@ export class SgquizComponent {
       }
     });
   }
-  
-  quiz():void{
-    this.tolink=false;
-    localStorage.setItem('UName',this.uName);
-    //this.route.navigate(['./quiz']);
+  copyLink():void{
+    const li=document.getElementById('quizLink') as HTMLInputElement;
+    li.select();
+    document.execCommand('copy');
+    alert("Link Copied to ClipBoard!");
+    this.quiz();
   }
-
+  quiz():void{
+    this.route.navigate(['./quiz']);
+  }
+  nav():void{
+    this.route.navigate(['./register']);
+  }
   logout():void{
     this.cons.logout().subscribe({
       next:(res)=>{
         console.log(res);
-        localStorage.getItem("token");
-        localStorage.removeItem("token");
+        this.isLogged=false;
+        localStorage.setItem("token",JSON.stringify(null));
+        localStorage.setItem("isLoggedIn",JSON.stringify(this.isLogged));
         alert("Logged Out!");
       },
       error:(e)=>console.error(e)

@@ -1,6 +1,7 @@
 import { Component, OnInit, DoCheck} from '@angular/core';
 import { ConnectionsService } from 'src/app/auth/connections.service';
 import { interval } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -9,7 +10,10 @@ import { interval } from 'rxjs';
 })
 export class QuizComponent {
   //isStarted:boolean=false;
+  isFirst:boolean=false;
+  link:string="";
   isCorrect:boolean=false;
+  uName:string="";
   public name: string = "";
   public questionList: any = [];
   public currentQuestion: number = 0;
@@ -21,11 +25,17 @@ export class QuizComponent {
   progress: string = "0";
   isQuizCompleted : boolean = false;
   dupCompleted: boolean=false;
-  constructor(private conn:ConnectionsService) { }
+  constructor(private conn:ConnectionsService, private route:Router) { }
 
   ngOnInit(): void {
-    this.name = localStorage.getItem("UName")!;
-    this.start();
+    //this.name = localStorage.getItem("UName")!;
+    //this.start();
+    //this.startCounter();
+  }
+  goOn():void{
+    this.isFirst=true;
+    this.name=this.uName;
+    this.start(this.link);
     this.startCounter();
   }
   ngDoCheck():void{
@@ -36,6 +46,7 @@ export class QuizComponent {
         points: this.points
       }
       const data={
+        link:this.link,
         d: d        
       }
       this.conn.save(data).subscribe(res=>{
@@ -46,9 +57,9 @@ export class QuizComponent {
       this.dupCompleted=false;
     }
   }
-  start():void {
-    this.conn.getQuestions().subscribe(res => {
-      //console.log(res.message);
+  start(link:string):void {
+    this.conn.getQuestions(link).subscribe(res => {
+        //console.log(res.message);
         this.questionList = res.message;
     })
   }
@@ -114,7 +125,7 @@ export class QuizComponent {
   }
   resetQuiz() {
     this.resetCounter();
-    this.start();
+    this.start(this.link);
     this.points = 0;
     this.counter = 60;
     this.currentQuestion = 0;
@@ -124,6 +135,9 @@ export class QuizComponent {
   getProgressPercent() {
     this.progress = ((this.currentQuestion / this.questionList.length) * 100).toString();
     return this.progress;
+  }
+  submit():void{
+    this.route.navigate(['./']);
   }
 
 }

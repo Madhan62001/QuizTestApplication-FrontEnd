@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConnectionsService } from 'src/app/auth/connections.service';
 
@@ -9,7 +9,12 @@ import { ConnectionsService } from 'src/app/auth/connections.service';
 })
 export class HomeComponent {
   but:boolean=false;
+  isLogged:boolean=false;
   constructor(private route:Router, private connection:ConnectionsService){}
+  ngOnInit(){
+    //console.log("Came Here!")
+    this.isLogged= JSON.parse(localStorage.getItem('isLoggedIn') || '{}');
+  }
   sgquiz():void{
     this.but=true;
     this.route.navigate(['./sgquiz']);
@@ -18,12 +23,19 @@ export class HomeComponent {
     this.but=true;
     this.route.navigate(['./aiquiz']);
   }
+  nav():void{
+    this.route.navigate(['./register']);
+  }
+  pay():void{
+    this.route.navigate(['./payment']);
+  }
   logout():void{
     this.connection.logout().subscribe({
       next:(res)=>{
         console.log(res);
-        localStorage.getItem("token");
-        localStorage.removeItem("token");
+        this.isLogged=false;
+        localStorage.setItem("token",JSON.stringify(null));
+        localStorage.setItem("isLoggedIn",JSON.stringify(this.isLogged));
         alert("Logged Out!");
       },
       error:(e)=>console.error(e)

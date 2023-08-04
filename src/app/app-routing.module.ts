@@ -5,13 +5,15 @@ import { SgquizComponent } from './components/sgquiz/sgquiz.component';
 import { AiquizComponent } from './components/aiquiz/aiquiz.component';
 import { HomeComponent } from './components/home/home.component';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const routes: Routes = [
-  { path:"register",component:RegisterComponent},
+  {path:"register",component:RegisterComponent},
   {path:"",component:HomeComponent},
   {path:"sgquiz",component:SgquizComponent},
   {path:"aiquiz",component:AiquizComponent},
-  {path:"quiz",component:QuizComponent}
+  {path:"quiz",component:QuizComponent},
+  {path:"payment",component:PaymentComponent}
 ];
 
 @NgModule({

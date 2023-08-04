@@ -1,21 +1,21 @@
-<header class="p-1 text-bg-dark">
-    <div class="container-fluid">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <h1>QuizkR</h1>
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="" class="nav-link px-1 text-secondary">Home</a></li><br>
-            </ul>
-        </div>
-    </div>
-</header>
-<div class="container mt-5">
+<!DOCTYPE html>
+<html lang="en" >
+  <header>
+	  <h3 class="logo" routerLink="">QUIZKR</h3>
+  </header>
+<div class="toname" *ngIf="!this.isFirst">
+    <input type="text" placeholder="Paste the link here" [(ngModel)]="this.link">
+    <input type="text" placeholder="Enter Your Name!" [(ngModel)]="this.uName" required/>
+	<button (click)="this.goOn()">Get Your Quiz</button>
+</div>
+<div class="container mt-5" *ngIf="this.isFirst">
     <div class="card">
         <div class="d-flex justify-content-between p-3">
             <div class="image">
-                <img src="https://img.icons8.com/color/96/000000/angularjs.png" width="90" alt="logo">
+                <img src="https://media.istockphoto.com/id/1338094421/vector/letter-q-element-logo-template-vector-illustration-design.jpg?s=612x612&w=0&k=20&c=ISG3tinNOZpd83K-2lOPWlz6BSN5F_1GXSHqaAHoii0=" width="90" alt="logo">
             </div>
             <div class="quiz-header">
-                <h4 style="font-family: cursive;">Angular & TypeScript Quiz!</h4>
+                <h4 style="font-family: cursive;">All the Best for your Quiz!</h4>
                 <span style="font-style: italic;">Welcome {{name}}</span>
             </div>
         </div>
@@ -52,11 +52,11 @@
                 </ol>
             </div>
             <div class="d-flex justify-content-between">
-                <button [disabled]="currentQuestion===0" class="btn" (click)="previousQuestion()"><i
+                <button [disabled]="currentQuestion===0" class="btn" (click)="previousQuestion()">Prev<i
                         class="fa text-primary fa-chevron-left fa-3x" aria-hidden="true"></i></button>
-                <button class="btn" (click)="resetQuiz()"><i class="fa fa-refresh text-primary fa-3x"
+                <button class="btn" (click)="resetQuiz()">Reset<i class="fa fa-refresh text-primary fa-3x"
                         aria-hidden="true"></i></button>
-                <button class="btn" (click)="nextQuestion()"><i class="fa text-primary fa-chevron-right fa-3x"
+                <button class="btn" (click)="nextQuestion()">Next<i class="fa text-primary fa-chevron-right fa-3x"
                         aria-hidden="true"></i></button>
             </div>
         </ng-container>
@@ -73,6 +73,7 @@
                     <p>Your Score : {{points}} Points </p>
                 </div>
             </div>
+            <button class="opt-2" style="position: relative;" (click)="this.submit()">Back To Home</button>
         </ng-container>
 
     </div>

@@ -1,139 +1,189 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+/* @import url("../node_modules/bootstrap/dist/css/bootstrap.css"); */
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@600&family=Montserrat:wght@500&family=Poppins:ital,wght@1,200&display=swap');
 *{
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    scroll-behavior: smooth;
+    
+    
+}
+li,a,button{
+    font-family: "montserrat",sans-serif;
+    font-weight: 500;
+    font-style: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+
+}
+.logo{
+    margin-right: auto;
+    cursor: pointer;
+    color: white;
 }
 header{
-    height: 100px;
-    position: relative;
-}
-footer{
-    height: 141px;
-    background-color: black;
-}
-h1{
-    padding-top: 25px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-bottom: 50px;
-}
-body{
+    position: fixed;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    height: 550px;
-    background: #050801;
-    font-family: 'Raleway', sans-serif;
-    font-weight: bold;
+    padding:1px 5%;
+    background-color: #004f88;
 }
-a{
-    padding-top: 25px;
-    padding-left: 75px;
-    padding-right: 75px;
-    padding-bottom: 50px;
-    font-size: 20px;
-}
-button{
-    position: static;
+
+.nav_links{
+    
+    list-style: none;
+}.nav_links li{
     display: inline-block;
-    background-color: black;
-    padding: 25px 30px;
-    margin: 40px 0;
-    color: #03e9f4;
-    text-decoration: none;
-    text-transform: uppercase;
+    padding: 0px 20px;
+    align-items: center;
+}
+.nav_links li a{
+    transition: all 0.3s ease 0s;
+}
+.nav_links li a:hover{
+    color: #ffc259;
+}
+.nav{
+    margin-top: 2px;
+}
+.cta1{
+    margin: 20px;
+    padding: 6px 25px;
+    background-color: #ffc259;
+    color: black;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+
+}
+.cta1:hover{
+    background-color:black;
+    color:white;
+}
+section{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fbdc61;
+    font-size: 100px;
+}
+section:nth-child(odd)
+{
+    background: #000;
+}
+h3{
+    color: #fbdc61;
+}
+
+.opt-1{
+
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    background: #fbdc61;
+    color: black;
+    border-radius: 8px;
+    padding: 14px 24px 16px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    transition: transform 200ms,background 200ms;
+    margin: 20px;
+}
+.opt-1:hover{
+    transform: translateY(-2px);
+    background: none;
+    border-radius: 8px;
+    color: #fbdc61;
+    box-shadow: 0 0 0 3px #fbdc61 inset;
+
+
+}
+.opt-2{
+    
+
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 14px 24px 16px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    transition: transform 200ms,background 200ms;
+    background: transparent;
+    color: #fbdc61;
+    box-shadow: 0 0 0 3px #fbdc61 inset;
+
+    
+}
+.opt-2:hover{
+    transform: translateY(-2px);
+    color: #000;
+    background-color: #fbdc61;
     transition: 0.5s;
-    letter-spacing: 4px;
-    overflow: hidden;
-    margin-right: 50px;
-   
+
 }
-button:hover{
-    background: #03e9f4;
-    color: #050801;
-    box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 200px #03e9f4;
-     -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+.arrow-button {
+    display: flex;
+    color: #C2FFE9;
+    background-color: #004f88;
+    padding: 10px 16px;
+    border-radius: 20px;
+    transition: all .3s ease;
+    font-weight: bold;
+    cursor: pointer;
+    align-items: center;
+    font-size: 14px;
 }
-button:nth-child(1){
-    filter: hue-rotate(270deg);
+
+.arrow-button > .arrow {
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid #C2FFE9;
+    border-bottom: 2px solid #C2FFE9;
+    position: relative;
+    transform: rotate(-45deg);
+    margin: 0 6px;
+    transition: all .3s ease;
 }
-button:nth-child(2){
-    filter: hue-rotate(110deg);
-}
-button span{
-    position: absolute;
+
+.arrow-button > .arrow::before {
     display: block;
-}
-button span:nth-child(1){
-    top: 0;
-    left: 0;
-    width: 100%;
+    background-color: currentColor;
+    width: 3px;
+    transform-origin: bottom right;
     height: 2px;
-    background: linear-gradient(90deg,transparent,#03e9f4);
-    animation: animate1 1s linear infinite;
-}
-@keyframes animate1{
-    0%{
-        left: -100%;
-    }
-    50%,100%{
-        left: 100%;
-    }
-}
-button span:nth-child(2){
-    top: -100%;
+    position: absolute;
+    opacity: 0;
+    bottom: calc(-2px / 2);
+    transform: rotate(45deg);
+    transition: all .3s ease;
+    content: "";
     right: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg,transparent,#03e9f4);
-    animation: animate2 1s linear infinite;
-    animation-delay: 0.25s;
-}
-@keyframes animate2{
-    0%{
-        top: -100%;
-    }
-    50%,100%{
-        top: 100%;
-    }
-}
-button span:nth-child(3){
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg,transparent,#03e9f4);
-    animation: animate3 1s linear infinite;
-    animation-delay: 0.50s;
-}
-@keyframes animate3{
-    0%{
-        right: -100%;
-    }
-    50%,100%{
-        right: 100%;
-    }
 }
 
-
-button span:nth-child(4){
-    bottom: -100%;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(360deg,transparent,#03e9f4);
-    animation: animate4 1s linear infinite;
-    animation-delay: 0.75s;
+.arrow-button:hover > .arrow {
+    transform: rotate(-45deg) translate(4px, 4px);
+    border-color: text-hover-color;
 }
-@keyframes animate4{
-    0%{
-        bottom: -100%;
-    }
-    50%,100%{
-        bottom: 100%;
-    }
+
+.arrow-button:hover > .arrow::before {
+    opacity: 1;
+    width: 8px;
+}
+
+.arrow-button:hover {
+    background-color: #000;
+    color: #fff;
+}
+#pricing-1{
+    color: #000;
 }

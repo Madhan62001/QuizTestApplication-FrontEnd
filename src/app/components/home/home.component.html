@@ -1,38 +1,30 @@
-<header class="p-1 text-bg-dark">
-  <div class="container-fluid">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <h1>QuizkR</h1>
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="" class="nav-link px-1 text-secondary">Home</a></li><br>
-        <li><a href="#" class="nav-link px-1 text-white">Pricing</a></li><br>
-        <li><a href="#" class="nav-link px-1 text-white">About</a></li>
-      </ul>
-      <a routerLink="register" class="nav-link px-1 text-white" style="padding-right: 25px;">SignIn/Up</a>
-      <a (click)="this.logout()" class="nav-link px-1 text-white">LogOut</a>
-    </div>
-  </div>
+<header>
+  <h3 class="logo">QUIZKR</h3>
+    <nav>
+    <ul class="nav_links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    </nav>
+    <a routerLink="register" *ngIf="!this.isLogged" class="cta" href="#"><button class="cta1" (click)="this.nav()">LOGIN</button></a>
+    <a class="cta" *ngIf="this.isLogged" href="#"><button class="cta1" (click)="this.logout()">Logout</button></a>
 </header>
 <body>
-  <button (click)="this.aiquiz()">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      AI Quiz
-  </button>
-  <button (click)="this.sgquiz()">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      Generate Your Quiz
-  </button>
+  <section id="home">
+    <div>
+      <button class="opt-1"(click)="this.aiquiz()">AI Quiz</button>
+      <button class="opt-2" (click)="this.sgquiz()">Generate</button>
+    </div>
+  </section>
+  <section id="pricing">
+    <h3 id="pricing-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Suscipit nulla, aperiam impedit corporis libero, voluptate numquam
+       necessitatibus eveniet aspernatur vero cum esse quasi accusantium, 
+      quibusdam iste accusamus natus blanditiis officiis.</h3>
+    <button class="arrow-button" (click)="this.pay()"><a href="#payment">click to pay</a><span class="arrow"></span>
+    </button>
+  </section>
+  <section id="about">about</section>
+
 </body>
-<footer class="container-fluid">
-  <div class="col-md-4 d-flex align-items-center">
-    <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-      <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-    </a>
-    <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Company, Inc</span>
-  </div>
-</footer>

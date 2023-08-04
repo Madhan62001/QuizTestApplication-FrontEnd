@@ -16,7 +16,7 @@ export class RegisterComponent {
   errorMessage = '';
   logname:string="";
   logpass:string="";
-  isLoggedIn:string="false";
+  isLoggedIn:boolean=false;
   constructor(private route:Router, private connection: ConnectionsService){  }
 
   register(): void{
@@ -47,10 +47,10 @@ export class RegisterComponent {
     };
     this.connection.login(data).subscribe({
       next: (res)=>{
-        this.isLoggedIn="true";
-        console.log(res);
+        this.isLoggedIn=true;
+        //console.log(res);
         localStorage.setItem('token',res.token);
-        localStorage.setItem('isLog',this.isLoggedIn);
+        localStorage.setItem('isLoggedIn',JSON.stringify(this.isLoggedIn));
         alert("LoggedIn Successfully!")
         this.route.navigate([''])
       },

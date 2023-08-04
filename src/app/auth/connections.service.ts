@@ -32,13 +32,14 @@ export class ConnectionsService {
     return this.http.post(api_URL,data,{withCredentials:true} );
   }
 
-  getQuestions():Observable<any>{
+  getQuestions(link:string):Observable<any>{
     let api_URL=url+'/ques';
-    return this.http.post(api_URL,{},{withCredentials:true});
+    return this.http.post(api_URL,{link},{withCredentials:true});
   }
 
   save(data:any):Observable<any>{
     //Quiz Attendees Info
+    //console.log("Came Here To Save!");
     let api_URL=url+'/save';
     return this.http.post(api_URL,data,{withCredentials:true});
   }

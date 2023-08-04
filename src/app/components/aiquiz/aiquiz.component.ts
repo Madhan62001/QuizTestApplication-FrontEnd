@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ConnectionsService } from 'src/app/auth/connections.service';
 import { Router } from '@angular/router';
 
@@ -9,7 +9,11 @@ import { Router } from '@angular/router';
 })
 export class AiquizComponent {
   topics: string[]=[];
+  link:string="";
+  isLogged:boolean=false;
   isLoading:boolean=false;
+  isreceived:boolean=true;
+  load:boolean=false;
   historyChecked:boolean=false;
   geoChecked:boolean=false;
   sciChecked:boolean=false;
@@ -18,9 +22,12 @@ export class AiquizComponent {
   outChecked:boolean=false;
   litChecked:boolean=false;
   gkChecked:boolean=false;
-  uName:string="";
   constructor(private conn: ConnectionsService, private route:Router){}
+  ngOnInit(){
+    this.isLogged= JSON.parse(localStorage.getItem('isLoggedIn') || '{}');
+  }
   submit():void{
+    this.isLoading=true;
     if(this.historyChecked){
       this.topics.push("History");
     }
@@ -51,23 +58,34 @@ export class AiquizComponent {
     }
     this.conn.aiInfo(data).subscribe({
       next:(res)=>{
-        this.isLoading=true;
+        this.isreceived=false;
+        this.load=true;
+        this.link=res.id;
         console.log(res);
       },error:(e)=>{
         console.log(e);
       }
     })
   }
+  copyLink():void{
+    const li=document.getElementById('quizLink') as HTMLInputElement;
+    li.select();
+    document.execCommand('copy');
+    alert("Link Copied to ClipBoard!");
+    this.quiz();
+  }
   quiz():void{
-    localStorage.setItem('UName',this.uName);
     this.route.navigate(['./quiz']);
+  }
+  nav():void{
+    this.route.navigate(['./register']);
   }
   logout():void{
     this.conn.logout().subscribe({
       next:(res)=>{
         console.log(res);
-        localStorage.getItem("token");
-        localStorage.removeItem("token");
+        localStorage.setItem("token",JSON.stringify(null));
+        localStorage.setItem("isLoggedIn",JSON.stringify(this.isLogged));
         alert("Logged Out!");
       },
       error:(e)=>console.error(e)

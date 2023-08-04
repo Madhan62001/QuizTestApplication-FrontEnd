@@ -6,9 +6,21 @@ body{
 	font-size: 15px;
 	line-height: 1.7;
 	color: #c4c3ca;
-	background-color: #1f2029;
+	background-color: #0a0a0a;
 	overflow-x: hidden;
 }
+
+header {
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1px 5%;
+  background-color: #004f88;
+}
+
 a {
 	cursor: pointer;
   transition: all 200ms linear;

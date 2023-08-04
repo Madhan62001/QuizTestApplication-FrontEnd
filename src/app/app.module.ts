@@ -18,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { ChangeBgDirective } from './change-bg.directive';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { PaymentComponent } from './components/payment/payment.component'; 
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AiquizComponent,
     HomeComponent,
     QuizComponent,
-    ChangeBgDirective
+    ChangeBgDirective,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

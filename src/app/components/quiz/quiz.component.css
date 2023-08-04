@@ -1,21 +1,106 @@
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  background-color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #004f88;
+  padding: 10px;
+}
+
+.logo {
+  margin: 0;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+}
+
+.toname {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fbdc61;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #007bff;
+  height:50px;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
 .card {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 10px;
+  max-width: 800px;
+  background-color: #fbdc61;
+  margin: 0 auto;
+  padding: 10px;
 }
 header{
-    height: 100px;
+  height: 100px;
 }
 li {
-    list-style-type: none;
-    cursor: pointer;
-    margin: 10px 0;
+  list-style-type: none;
+  cursor: pointer;
+  margin: 10px 0;
 }
 
 li .card:hover {
-    border: 1px solid blue;
+  border: 1px solid blue;
 }
 
 ol {
-    padding: 0;
+  padding: 0;
+}
+
+
+.opt-2{
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 14px 24px 16px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 200ms,background 200ms;
+  background: transparent;
+  color: #fbdc61;
+  box-shadow: 0 0 0 3px #fbdc61 inset;
+
+  
+}
+.opt-2:hover{
+  transform: translateY(-2px);
+  color: #000;
+  background-color: #fbdc61;
+  transition: 0.5s;
+
 }
