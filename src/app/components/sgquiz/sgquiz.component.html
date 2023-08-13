@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" >
-  <header>
-	  <h3 class="logo" routerLink="">QUIZKR</h3>
-	  <nav>
-      <ul class="nav_links">
-        <li><a href="http://localhost:4200/aiquiz">AI Quiz</a></li>
-      </ul>
-    </nav>
-    <a routerLink="register" *ngIf="!this.isLogged" class="cta" href="#"><button class="cta1" (click)="this.nav()">LOGIN</button></a>
-    <a class="cta" *ngIf="this.isLogged" ><button class="cta1" (click)="this.logout()">Logout</button></a>
-  </header>
+<html lang="en">
+<header>
+  <h3 class="logo" routerLink="">QUIZKR</h3>
+  <nav>
+    <ul class="nav_links">
+      <li><a href="http://localhost:4200/aiquiz">AI Quiz</a></li>
+    </ul>
+  </nav>
+  <a routerLink="register" *ngIf="!this.isLogged" class="cta" href="#"><button class="cta1"
+      (click)="this.nav()">LOGIN</button></a>
+  <a class="cta" *ngIf="this.isLogged"><button class="cta1" (click)="this.logout()">Logout</button></a>
+</header>
+
 <body>
   <div *ngIf="!this.hide">
     <form [formGroup]="myForm" (ngSubmit)="submit()">
-      <label >Question Goes here  </label>
+      <label>Question Goes here </label>
       <input formControlName="question" type="text" placeholder="Enter your Question" required="" /><br><br>
-      <label >Option 1  </label>
-      <input formControlName="answer1" type="text" placeholder="Enter Option 1" required="" /><br><br>
-      <label >Option 2  </label>
-      <input formControlName="answer2" type="text" placeholder="Enter Option 2" required="" /><br><br>
-      <label >Option 3  </label>
-      <input formControlName="answer3" type="text" placeholder="Enter Option 3" required="" /><br><br>
-      <label >Option 4  </label>
-      <input formControlName="answer4" type="text" placeholder="Enter Option 4" required="" /><br><br>
-      <label >Correct Answer  </label>
+      <label>Answer Options:</label><br>
+      <input formControlName="answer1" type="text" placeholder="Enter Option 1" required=""><br>
+      <input formControlName="answer2" type="text" placeholder="Enter Option 2" required=""><br>
+      <input formControlName="answer3" type="text" placeholder="Enter Option 3" required=""><br>
+      <input formControlName="answer4" type="text" placeholder="Enter Option 4" required=""><br><br>
+
+      <label>Correct Answer </label>
       <input formControlName="cAnswer" type="text" placeholder="Enter the Correct Option" required="" /><br><br>
       <button type="submit">Add Another!</button><br><br>
     </form>

@@ -1,54 +1,65 @@
-/* @import url("../node_modules/bootstrap/dist/css/bootstrap.css"); */
 @import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@600&family=Montserrat:wght@500&family=Poppins:ital,wght@1,200&display=swap');
-*{
+
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
-    
-    
+
+
 }
-li,a,button{
-    font-family: "montserrat",sans-serif;
+
+li,
+a,
+button {
+    font-family: "montserrat", sans-serif;
     font-weight: 500;
     font-style: 16px;
     color: #edf0f1;
     text-decoration: none;
 
 }
-.logo{
+
+.logo {
     margin-right: auto;
     cursor: pointer;
     color: white;
 }
-header{
+
+header {
     position: fixed;
     width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding:1px 5%;
+    padding: 1px 5%;
     background-color: #004f88;
 }
 
-.nav_links{
-    
+.nav_links {
+
     list-style: none;
-}.nav_links li{
+}
+
+.nav_links li {
     display: inline-block;
     padding: 0px 20px;
     align-items: center;
 }
-.nav_links li a{
+
+.nav_links li a {
     transition: all 0.3s ease 0s;
 }
-.nav_links li a:hover{
+
+.nav_links li a:hover {
     color: #ffc259;
 }
-.nav{
+
+.nav {
     margin-top: 2px;
 }
-.cta1{
+
+.cta1 {
     margin: 20px;
     padding: 6px 25px;
     background-color: #ffc259;
@@ -59,11 +70,13 @@ header{
     transition: all 0.3s ease 0s;
 
 }
-.cta1:hover{
-    background-color:black;
-    color:white;
+
+.cta1:hover {
+    background-color: black;
+    color: white;
 }
-section{
+
+section {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -72,15 +85,16 @@ section{
     background: #fbdc61;
     font-size: 100px;
 }
-section:nth-child(odd)
-{
+
+section:nth-child(odd) {
     background: #000;
 }
-h3{
+
+h3 {
     color: #fbdc61;
 }
 
-.opt-1{
+.opt-1 {
 
     display: inline-block;
     outline: 0;
@@ -93,10 +107,11 @@ h3{
     font-size: 18px;
     font-weight: 700;
     line-height: 1;
-    transition: transform 200ms,background 200ms;
+    transition: transform 200ms, background 200ms;
     margin: 20px;
 }
-.opt-1:hover{
+
+.opt-1:hover {
     transform: translateY(-2px);
     background: none;
     border-radius: 8px;
@@ -105,8 +120,9 @@ h3{
 
 
 }
-.opt-2{
-    
+
+.opt-2 {
+
 
     display: inline-block;
     outline: 0;
@@ -117,20 +133,22 @@ h3{
     font-size: 18px;
     font-weight: 700;
     line-height: 1;
-    transition: transform 200ms,background 200ms;
+    transition: transform 200ms, background 200ms;
     background: transparent;
     color: #fbdc61;
     box-shadow: 0 0 0 3px #fbdc61 inset;
 
-    
+
 }
-.opt-2:hover{
+
+.opt-2:hover {
     transform: translateY(-2px);
     color: #000;
     background-color: #fbdc61;
     transition: 0.5s;
 
 }
+
 .arrow-button {
     display: flex;
     color: #C2FFE9;
@@ -144,7 +162,7 @@ h3{
     font-size: 14px;
 }
 
-.arrow-button > .arrow {
+.arrow-button>.arrow {
     width: 6px;
     height: 6px;
     border-right: 2px solid #C2FFE9;
@@ -155,7 +173,7 @@ h3{
     transition: all .3s ease;
 }
 
-.arrow-button > .arrow::before {
+.arrow-button>.arrow::before {
     display: block;
     background-color: currentColor;
     width: 3px;
@@ -170,12 +188,12 @@ h3{
     right: 0;
 }
 
-.arrow-button:hover > .arrow {
+.arrow-button:hover>.arrow {
     transform: rotate(-45deg) translate(4px, 4px);
     border-color: text-hover-color;
 }
 
-.arrow-button:hover > .arrow::before {
+.arrow-button:hover>.arrow::before {
     opacity: 1;
     width: 8px;
 }
@@ -184,6 +202,72 @@ h3{
     background-color: #000;
     color: #fff;
 }
-#pricing-1{
+
+#pricing-1 {
     color: #000;
 }
+
+.card-container {
+    padding-top: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    width: 300px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.card-image1 {
+    width: 100%;
+    height: 200px;
+    background-image: url('https://etimg.etb2bimg.com/photo/100062546.cms');
+    background-size: cover;
+    background-position: center;
+}
+
+.card-image2 {
+    width: 100%;
+    height: 200px;
+    background-image: url('https://play-lh.googleusercontent.com/oO5WLfgUwLg1yGSLWWy3b5OEL03bos3igcwpzRH4x8pwmly0fJTEi2S7epEhL5vHWpke');
+    background-size: cover;
+    background-position: center;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 14px;
+    color: #666;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+  }

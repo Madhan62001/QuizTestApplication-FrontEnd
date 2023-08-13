@@ -29,16 +29,10 @@ export class HomeComponent {
   pay():void{
     this.route.navigate(['./payment']);
   }
-  logout():void{
-    this.connection.logout().subscribe({
-      next:(res)=>{
-        console.log(res);
-        this.isLogged=false;
-        localStorage.setItem("token",JSON.stringify(null));
-        localStorage.setItem("isLoggedIn",JSON.stringify(this.isLogged));
-        alert("Logged Out!");
-      },
-      error:(e)=>console.error(e)
-    });
+  toQuiz():void{
+    this.route.navigate(['/quiz']);
+  }
+  profile():void{
+    this.route.navigate(['./profile']);
   }
 }

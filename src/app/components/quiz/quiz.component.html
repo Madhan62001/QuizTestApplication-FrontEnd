@@ -4,7 +4,8 @@
 	  <h3 class="logo" routerLink="">QUIZKR</h3>
   </header>
 <div class="toname" *ngIf="!this.isFirst">
-    <input type="text" placeholder="Paste the link here" [(ngModel)]="this.link">
+    <h3>To Get To Your Quiz:</h3>
+    <input type="text" placeholder="Paste the Quiz ID here!" [(ngModel)]="this.link">
     <input type="text" placeholder="Enter Your Name!" [(ngModel)]="this.uName" required/>
 	<button (click)="this.goOn()">Get Your Quiz</button>
 </div>

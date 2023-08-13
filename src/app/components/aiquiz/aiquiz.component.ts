@@ -60,7 +60,7 @@ export class AiquizComponent {
       next:(res)=>{
         this.isreceived=false;
         this.load=true;
-        this.link=res.id;
+        this.link=res.id+"2";
         console.log(res);
       },error:(e)=>{
         console.log(e);

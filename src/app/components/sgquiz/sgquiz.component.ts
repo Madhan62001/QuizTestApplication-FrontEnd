@@ -70,7 +70,7 @@ export class SgquizComponent {
     this.cons.passuserquiz(data).subscribe({
       next:(res)=>{
         console.log(res);
-        this.link=res.id;
+        this.link=res.id+"1";
         this.hide=true;        
       },
       error:(e)=>{

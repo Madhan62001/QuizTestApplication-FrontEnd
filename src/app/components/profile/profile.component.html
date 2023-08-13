@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<header>
+  <h3 class="logo" routerLink="">QUIZKR</h3>
+  <nav>
+    <ul class="nav_links">
+      <li><a href="profile">Profile</a></li>
+      <li><a href="price">Pricing</a></li>
+    </ul>
+  </nav>
+  <button class="arrow-button" style="background-color: crimson;" (click)="this.toQuiz()"><a routerLink="quiz"
+      href="">Take Instant Quiz</a><span class="arrow"></span>
+  </button>
+  <a class="cta" *ngIf="this.isLogged"><button class="cta1" (click)="this.logout()">Logout</button></a>
+</header>
+
+<body>
+  <section id="profile">
+    <div class="profile-card">
+      <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+        <div class="card p-4">
+          <div class=" image d-flex flex-column justify-content-center align-items-center">
+            <button class="btn btn-secondary" style="background-color: aliceblue;">
+              <img *ngIf="this.isFemale" src="https://imgur.com/DIWGBrP.jpg" height="100" width="100" />
+              <img *ngIf="this.isMale" src="https://i.imgur.com/RcJayll.jpg" height="100" width="100" />
+              <img *ngIf="this.isBot" src="https://i.imgur.com/MlIPI08.jpg" height="100" width="100" />
+            </button>
+            <span class="name mt-3">{{this.name}}</span> <span class="idd">@{{this.email}}</span>
+            <div *ngIf="!this.isSub" class="d-flex flex-row justify-content-center align-items-center gap-2"> <span
+                class="idd1"> 🌱Quiz Enthusiast 🌱</span>  </div>
+            <div *ngIf="this.isSub" class="d-flex flex-row justify-content-center align-items-center gap-2"> <span
+                class="idd1">🔥 Subscribed QuizKR 🔥</span>  </div>
+            <div class="d-flex flex-row justify-content-center align-items-center mt-3">
+              <span class="number">{{this.tleft}} <span class="follow">Number of Quiz Turns Left</span></span>
+            </div>
+            <div class=" d-flex mt-2"> <button class="btn1 btn-dark" (click)="this.nav()">View Quiz Attendees</button> </div>
+            <div *ngIf="!this.isSub" class="text mt-3"> <p>🌱 Quiz Enthusiast 🌱<br>
+                Hello! I'm here on QuizKR to dive into the world of knowledge and have a blast with quizzes.
+                Every question is a chance to learn something new.
+                Join me on this exciting journey! 📚🧠 #CuriousMind</p>
+            </div>
+            <div *ngIf="this.isSub" class="text mt-3"> <p>🌟 Proud Subscriber 
+                Hey there! I'm a proud subscriber of QuizkR – where learning meets fun. Your support helps me explore
+                fascinating quizzes and contribute to the growth of this incredible community.
+                Let's keep the curiosity alive together! 🚀🧠 #QuizEnthusiast</p>
+            </div>
+            <div class=" px-2 rounded mt-4 date "> <div class="example">Joined {{this.jmon}},{{this.jyr}}</div> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="price">
+    <div class="wrapper">
+      <div class="table basic" style="height: 650px; margin-top: 70px;">
+        <div class="head_tab"><h2>Lite Membership</h2></div>
+        <div class="aj_p"><p>Ideal solution for Students</p></div>
+        <div class="price-section">
+          <div class="price-area">
+            <div class="inner-area">
+              <span class="price">$29<span style="font-size:12px">/mo</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="package-name"></div>
+        <div class="btn"><button (click)="makePayment(29)">Add to Cart</button></div> 
+        <ul class="features" style="margin-top: -50px;">
+          <h3>Features</h3>
+          <li>
+            <span class="list-name">Upto 15 Own Quiz Generations</span>
+            <span class="icon check"><i class="fas fa-check"></i></span>
+          </li>
+          <li>
+            <span class="list-name">Upto 20 Playable AI Quizzes</span>
+            <span class="icon check"><i class="fas fa-check"></i></span>
+          </li>
+          <h3>Upcoming</h3>
+          <li>
+            <span class="list-name">Default Changable  Themes</span>
+            <span class="icon cross"><i class="fas fa-times"></i></span>
+          </li>
+        </ul>
+      </div>
+      <div class="table premium" style="height: 725px; margin-top: 20px;">
+        <div class="head_tab"><h2>Premium Membership</h2></div>
+        <div class="aj_p"><p>Perfect package for Quiz Hosters</p></div>
+        <div class="ribbon"><span>BEST VALUE</span></div>
+        <div class="price-section">
+          <div class="price-area">
+            <div class="inner-area">
+              <span class="price">$99<span style="font-size:12px">/mo</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="package-name"></div>
+        <div class="btn"><button (click)="makePayment(99)">Add to Cart</button></div>
+        <ul class="features" style="margin-top: -80px;">
+          <h3>Features</h3>
+          <li style="padding-left: 28px;">
+            <span class="list-name">Unlimited Quiz Generations And Hostings</span>
+            <span class="icon check"><i class="fas fa-check"></i></span>
+          </li>
+          <li style="padding-left: 30px;">
+            <span class="list-name">Unlimited Playable Quizzes</span>
+            <span class="icon check"><i class="fas fa-check"></i></span>
+          </li>
+          <h3>Upcoming</h3>
+          <li style="padding-left: 30px; padding-top: 10px;">
+            <span class="list-name">Various Background Themes</span>
+            <span class="icon check"><i class="fas fa-check"></i></span>
+          </li>
+          <li style="padding-left: 34px; margin: -10px;">
+            <span class="list-name">AI Enhanced Score DashBoard</span>
+            <span class="icon check"><i class="fas fa-check"></i></span>
+          </li>
+        </ul> 
+      </div>
+      <div class="table ultimate"  style="height: 650px; margin-top: 70px;">
+        <div class="head_tab"><h2>Elite Membership</h2></div>
+        <div class="aj_p"><p>Perfect package for businesses</p></div>
+        <div class="price-section">
+          <div class="price-area">
+            <div class="inner-area">
+              <span class="price">$59<span style="font-size:12px">/mo</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="package-name"></div>
+        <div class="btn"><button (click)="makePayment(59)">Add to Cart</button></div>
+        <ul class="features" style="margin-top: -60px;">
+          <h3>Features</h3>
+          <li>
+            <span class="list-name">25 Quiz Generations And Hostings</span>
+            <span class="icon check"><i class="fas fa-check"></i></span>
+          </li>
+          <li>
+            <span class="list-name">Unlimited Playable Quizzes</span>
+            <span class="icon check"><i class="fas fa-check"></i></span>
+          </li>
+          <h3>Upcoming</h3>
+          <li>
+            <span class="list-name">Limited Theme Implementations</span>
+            <span class="icon check"><i class="fas fa-check"></i></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</body>

@@ -19,7 +19,8 @@ import { HomeComponent } from './components/home/home.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { ChangeBgDirective } from './change-bg.directive';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { PaymentComponent } from './components/payment/payment.component'; 
+import { ProfileComponent } from './components/profile/profile.component';
+import { DsboardComponent } from './components/dsboard/dsboard.component'; 
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     HomeComponent,
     QuizComponent,
     ChangeBgDirective,
-    PaymentComponent
+    ProfileComponent,
+    DsboardComponent
   ],
   imports: [
     BrowserModule,

@@ -38,8 +38,6 @@ export class ConnectionsService {
   }
 
   save(data:any):Observable<any>{
-    //Quiz Attendees Info
-    //console.log("Came Here To Save!");
     let api_URL=url+'/save';
     return this.http.post(api_URL,data,{withCredentials:true});
   }
@@ -47,5 +45,20 @@ export class ConnectionsService {
   aiInfo(data:any):Observable<any>{
     let api_URL=url+'/ai';
     return this.http.post(api_URL,data,{withCredentials:true});
+  }
+
+  profile():Observable<any>{
+    let api_URL=url+'/profile';
+    return this.http.post(api_URL,{},{withCredentials:true});
+  }
+
+  dsboard():Observable<any>{
+    let api_URL=url+'/board';
+    return this.http.post(api_URL,{},{withCredentials:true});
+  }
+
+  subscription(d:any):Observable<any>{
+    let api_URL=url+'/sub';
+    return this.http.post(api_URL,d,{withCredentials:true});
   }
 }

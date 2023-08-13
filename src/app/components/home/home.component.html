@@ -3,28 +3,40 @@
     <nav>
     <ul class="nav_links">
       <li><a href="#home">Home</a></li>
-      <li><a href="#pricing">Pricing</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
     </nav>
+    <button class="arrow-button" style="background-color: crimson;" (click)="this.toQuiz()"><a routerLink="quiz" href="">Take Instant Quiz</a><span class="arrow"></span>
+    </button>
     <a routerLink="register" *ngIf="!this.isLogged" class="cta" href="#"><button class="cta1" (click)="this.nav()">LOGIN</button></a>
-    <a class="cta" *ngIf="this.isLogged" href="#"><button class="cta1" (click)="this.logout()">Logout</button></a>
+    <a class="cta" *ngIf="this.isLogged" routerLink="profile"><button class="cta1" (click)="this.profile()">Profile</button></a>
 </header>
 <body>
   <section id="home">
-    <div>
-      <button class="opt-1"(click)="this.aiquiz()">AI Quiz</button>
-      <button class="opt-2" (click)="this.sgquiz()">Generate</button>
+    <div class="card-container">
+      <div class="card">
+        <div class="card-image1"></div>
+        <div class="card-content">
+          <h2 class="card-title">Experience AI Quiz</h2>
+          <p class="card-text">Get Ready to unravel the mysteries of AI and put your knowledge to the test, buckle up and 
+              embark on this exciting quiz adventure!</p>
+          <button class="btn" (click)="this.aiquiz()">AI Quiz</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-image2"></div>
+        <div class="card-content">
+          <h2 class="card-title">Generate Your Own Quiz</h2>
+          <p class="card-text">Get ready to dive into a world of user-generated questions that will both entertain and challenge you ajksksksksksksk!</p>
+          <button class="btn" (click)="this.sgquiz()">Generate</button>
+        </div>
+      </div>
     </div>
   </section>
-  <section id="pricing">
-    <h3 id="pricing-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-      Suscipit nulla, aperiam impedit corporis libero, voluptate numquam
-       necessitatibus eveniet aspernatur vero cum esse quasi accusantium, 
-      quibusdam iste accusamus natus blanditiis officiis.</h3>
-    <button class="arrow-button" (click)="this.pay()"><a href="#payment">click to pay</a><span class="arrow"></span>
-    </button>
+  <section id="about">
+    About
   </section>
-  <section id="about">about</section>
+  <section id="contact">Contact</section>
 
 </body>

@@ -43,7 +43,9 @@ export class QuizComponent {
       //console.log("Camme Here")
       const d={
         name: this.name,
-        points: this.points
+        points: this.points,
+        crtAns: this.correctAnswer,
+        inAns: this.inCorrectAnswer
       }
       const data={
         link:this.link,

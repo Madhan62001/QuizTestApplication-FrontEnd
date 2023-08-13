@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QUIZKR Dashboard</title>
+</head>
+<body>
+  <header>
+    <h3 class="logo">QUIZKR</h3>
+    <nav>
+      <ul class="nav_links">
+        <li><a href="http://localhost:4200/sgquiz">Generate Quiz</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="container">
+    <div *ngIf="!isStart" class="message">
+      <p>DashBoard Works!</p>
+    </div>
+    <div *ngIf="isStart" class="card-container">
+      <div class="card">
+        <h2>{{ students[currentStudentIndex].name }}</h2>
+        <p class="score">Score: {{ students[currentStudentIndex].points }}</p>
+        <p>Correct Answers: {{students[currentStudentIndex].crtAns}}</p>
+        <p>Incorrect Answers: {{students[currentStudentIndex].inAns}}</p>
+      </div>
+      <div class="navigation">
+        <button (click)="prevStudent()" [disabled]="currentStudentIndex === 0">Previous</button>
+        <button (click)="nextStudent()" [disabled]="currentStudentIndex === students.length - 1">Next</button>
+      </div>
+    </div>
+    <div class="leaderboard">
+      <h3>Leaderboard</h3>
+      <ol>
+        <li *ngFor="let student of getTopStudents(); let i = index">
+          {{ i + 1 }}. {{ student.name }} - {{ student.points }} points
+        </li>
+      </ol>
+    </div>
+    <div class="analytics">
+      <h3>Performance Analytics</h3>
+      <p>Average Score: {{ calculateAverageScore() }}</p>
+      <p>Highest Score: {{ calculateHighestScore() }}</p>
+      <p>Lowest Score: {{ calculateLowestScore() }}</p>
+    </div>
+  </div>
+</body>
+</html>
