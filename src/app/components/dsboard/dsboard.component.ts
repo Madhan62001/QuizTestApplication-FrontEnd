@@ -8,25 +8,42 @@ import { Router } from '@angular/router';
   styleUrls: ['./dsboard.component.css']
 })
 export class DsboardComponent {
-  students: any[]=[];
+  students: any[] = [];
   currentStudentIndex = 0;
-  isStart:boolean=false;
-  constructor(private conn:ConnectionsService){}
-  ngOnInit(){
+  isStart: boolean = false;
+  sucMsg: string = "";
+  errMsg: string = "";
+  warnMsg: string = "";
+  iserror: boolean = false;
+  isReg: boolean = false;
+  iswarn: boolean = false;
+  duration: number = 2000;
+  constructor(private conn: ConnectionsService) { }
+  ngOnInit() {
     this.conn.dsboard().subscribe({
-      next:(res)=>{
-        this.isStart=true;
-        for(var i=0;i<res.users.length;i++){
-          const d = {
-            name: res.users[i].name,
-            points: res.users[i].points,
-            crtAns: res.users[i].crt,
-            inAns: res.users[i].incrt
-          };
-          this.students.push(d);
-          // console.log(this.students);
+      next: (res) => {
+        if (res.users) {
+          console.log("Came!");
+          this.isStart = false;
+          this.iswarn = true;
+          this.warnMsg = "No Attendees Yet!";
+          setTimeout(() => {
+            this.iswarn = false;
+          }, this.duration);
+        } else {
+          this.isStart = true;
+          for (var i = 0; i < res.users.length; i++) {
+            const d = {
+              name: res.users[i].name,
+              points: res.users[i].points,
+              crtAns: res.users[i].crt,
+              inAns: res.users[i].incrt
+            };
+            this.students.push(d);
+          }
         }
-        console.log(this.students);
+        // console.log(this.students);
+        //console.log(this.students);
       }
     })
   }

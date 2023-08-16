@@ -22,6 +22,13 @@ export class AiquizComponent {
   outChecked:boolean=false;
   litChecked:boolean=false;
   gkChecked:boolean=false;
+  sucMsg: string = "";
+  errMsg: string = "";
+  warnMsg: string = "";
+  iserror: boolean = false;
+  isReg: boolean = false;
+  iswarn: boolean = false;
+  duration: number = 2000;
   constructor(private conn: ConnectionsService, private route:Router){}
   ngOnInit(){
     this.isLogged= JSON.parse(localStorage.getItem('isLoggedIn') || '{}');
@@ -61,9 +68,19 @@ export class AiquizComponent {
         this.isreceived=false;
         this.load=true;
         this.link=res.id+"2";
-        console.log(res);
+        this.isReg = true;
+        this.sucMsg = "Quiz Has Been Generated!";
+        setTimeout(() => {
+          this.isReg = false;
+        }, this.duration);
       },error:(e)=>{
-        console.log(e);
+        this.errMsg = "Not Signed In!";
+        this.iserror = true;
+        setTimeout(() => {
+          this.iserror = false;
+          this.route.navigate(['./login']);
+        }, this.duration);
+        console.error(e);
       }
     })
   }
@@ -71,22 +88,28 @@ export class AiquizComponent {
     const li=document.getElementById('quizLink') as HTMLInputElement;
     li.select();
     document.execCommand('copy');
-    alert("Link Copied to ClipBoard!");
-    this.quiz();
-  }
-  quiz():void{
-    this.route.navigate(['./quiz']);
+    this.iswarn = true;
+    this.warnMsg="Link Copied To ClipBoard!";
+    setTimeout(() => {
+      this.iswarn = false;
+      this.route.navigate(['./quiz']);
+    }, this.duration);
   }
   nav():void{
     this.route.navigate(['./register']);
   }
   logout():void{
     this.conn.logout().subscribe({
-      next:(res)=>{
+      next: (res) => {
         console.log(res);
-        localStorage.setItem("token",JSON.stringify(null));
-        localStorage.setItem("isLoggedIn",JSON.stringify(this.isLogged));
-        alert("Logged Out!");
+        this.isLogged = false;
+        localStorage.setItem("token", JSON.stringify(null));
+        localStorage.setItem("isLoggedIn", JSON.stringify(this.isLogged));
+        this.isReg=true;
+        this.sucMsg = "Logged Out!";
+        setTimeout(() => {
+          this.isReg = false;
+        }, this.duration);
       },
       error:(e)=>console.error(e)
     });

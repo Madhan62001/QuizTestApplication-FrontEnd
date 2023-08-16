@@ -1,40 +1,61 @@
 *:after,
 *:before {
-  box-sizing: border-box;
+  box-sizing:initial;
+
 }
 body {
   font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
-  line-height: 1.6;
-  background-color: #000;
-  margin: 0;
-  padding: 0;
+ 
+  background: -webkit-linear-gradient(to left, #fdbb2d, #22c1c3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #fdbb2d, #22c1c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+}
+header {
+
+  width: 100%;
+margin-bottom: 0;
+  display: flex;
+
+  align-items: center;
+  padding: 20px 5%;
+
+  background-color: #ffc649;
+
 }
 
-header {
-  background-color: #004f88;
-  padding: 10px;
-}
+
 
 .logo {
   margin: 0;
   cursor: pointer;
-  color: white;
-  font-size: 24px;
+  color: #179ea6;
+  font-size: 29px;
 }
 
 .toname {
   max-width: 600px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #fbdc61;
+ /* From https://css.glass */
+background: rgba(198, 211, 215, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
 input[type="text"] {
-  width: 100%;
-  padding: 12px;
+  width: 80%;
+  padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -42,7 +63,7 @@ input[type="text"] {
 }
 
 button {
-  background-color: #007bff;
+  background-color: #123d7e;
   height:50px;
   color: #fff;
   border: none;
@@ -58,13 +79,17 @@ button:hover {
 }
 .card {
   max-width: 800px;
-  background-color: #fbdc61;
+ /* From https://css.glass */
+background: rgba(225, 217, 215, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
   margin: 0 auto;
   padding: 10px;
 }
-header{
-  height: 100px;
-}
+
 li {
   list-style-type: none;
   cursor: pointer;

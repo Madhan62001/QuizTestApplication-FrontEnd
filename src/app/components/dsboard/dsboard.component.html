@@ -7,13 +7,27 @@
 </head>
 <body>
   <header>
-    <h3 class="logo">QUIZKR</h3>
+    <h3 class="logo" routerLink="">QUIZKR</h3>
     <nav>
       <ul class="nav_links">
-        <li><a href="http://localhost:4200/sgquiz">Generate Quiz</a></li>
+        <li><a id="gquiz" href="http://localhost:4200/sgquiz">Generate Quiz</a></li>
       </ul>
     </nav>
   </header>
+  <div class="alert success-alert" *ngIf="this.isReg">
+    <div class="icon">&#10004;</div>
+    <h3>{{this.sucMsg}}</h3>
+  </div>
+
+  <div class="alert danger-alert" *ngIf="this.iserror">
+    <div class="icon">&#10060;</div>
+    <h3>{{this.errMsg}}</h3>
+  </div>
+
+  <div class="alert warning-alert" *ngIf="this.iswarn">
+    <div class="icon">&#9888;</div>
+    <h3>{{this.warnMsg}}</h3>
+  </div>
   <div class="container">
     <div *ngIf="!isStart" class="message">
       <p>DashBoard Works!</p>

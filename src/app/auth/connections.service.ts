@@ -9,9 +9,11 @@ const url="http://localhost:8000/api";
 })
 export class ConnectionsService {
   constructor(private http: HttpClient) { }
-
+  get():Observable<any>{
+    let api_URL=url+'/usernames';
+    return this.http.get(api_URL);
+  }
   create(data: any): Observable<any>{
-    console.log(data);
     let api_URL=url+'/register';  
     return this.http.post(api_URL,data);
   }

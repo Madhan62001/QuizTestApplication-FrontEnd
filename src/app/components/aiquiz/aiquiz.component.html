@@ -11,6 +11,20 @@
 	<a class="cta" *ngIf="this.isLogged" ><button class="cta1" (click)="this.logout()">Logout</button></a>
 </header>
 <body>
+	<div class="alert success-alert" *ngIf="this.isReg">
+		<div class="icon">&#10004;</div>
+		<h3>{{this.sucMsg}}</h3>
+	  </div>
+	
+	  <div class="alert danger-alert" *ngIf="this.iserror">
+		<div class="icon">&#10060;</div>
+		<h3>{{this.errMsg}}</h3>
+	  </div>
+	
+	  <div class="alert warning-alert" *ngIf="this.iswarn">
+		<div class="icon">&#9888;</div>
+		<h3>{{this.warnMsg}}</h3>
+	  </div>
 <fieldset class="checkbox-group" *ngIf="!this.isLoading && this.isreceived">
 	<legend class="checkbox-group-legend">Select Topics For Quiz Generation</legend>
 	<div class="checkbox">

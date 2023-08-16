@@ -20,7 +20,7 @@ header {
     justify-content: flex-end;
     align-items: center;
     padding: 1px 5%;
-    background-color: #004f88;
+    background-color: #ffc649;
 }
 
 .nav_links {
@@ -39,7 +39,7 @@ header {
 }
 
 .nav_links li a:hover {
-    color: #ffc259;
+    color: #179ea6;
 }
 
 .nav {
@@ -52,15 +52,15 @@ button {
     font-family: "montserrat", sans-serif;
     font-weight: 500;
     font-style: 16px;
-    color: #edf0f1;
+    color: #123d7e;
     text-decoration: none;
 }
 
 .cta1 {
     margin: 20px;
     padding: 6px 25px;
-    background-color: #ffc259;
-    color: black;
+    background-color: #179ea6;
+    color: white;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -75,9 +75,9 @@ button {
 
 .arrow-button {
     display: flex;
-    color: #C2FFE9;
+    color: white;
     background-color: #004f88;
-    padding: 10px 16px;
+    padding: 6px 16px;
     border-radius: 20px;
     transition: all .3s ease;
     font-weight: bold;
@@ -123,15 +123,17 @@ button {
 }
 
 .arrow-button:hover {
-    background-color: #000;
+    background-color: #179ea6;
     color: #fff;
 }
-
+.og-arrow{
+  color: white;
+}
 .cta1 {
     margin: 20px;
     padding: 6px 25px;
-    background-color: #ffc259;
-    color: black;
+    background-color: #156c8e;
+    color: white;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -140,7 +142,7 @@ button {
 }
 
 .cta1:hover {
-    background-color: black;
+    background-color: #179ea6;
     color: white;
 }
 
@@ -156,6 +158,12 @@ button {
     border: none;
     cursor: pointer;
     transition: all 0.5s;
+    /* From https://css.glass */
+background: rgba(250, 250, 250, 0.4);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8.8px);
+-webkit-backdrop-filter: blur(8.8px);
 }
 
 .image img {
@@ -199,23 +207,29 @@ button {
 
 .example {
     font-size: 14px;
-    color: #a0a0a0;
+    color: #156c8e;
     font-weight: bold;
+   
     width: 150px;
     height: 50px;
     align-items: center;
-    padding-bottom: 4px;
+   
 }
 
 .btn1 {
-    height: 40px;
-    width: 150px;
+    height: 45px;
+    width: 180px;
     border: none;
-    background-color: #000;
-    color: #aeaeae;
-    font-size: 15px
+    background-color: #123d7e;
+    color: white;
+    font-size: 15px;
+    border-radius:50px;
+    
 }
-
+.btn1:hover{
+  background-color: #179ea6;
+  transition: 0.2s;
+}
 p {
     font-size: 18px;
     font-weight: 10px;
@@ -280,12 +294,19 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #fbdc61;
+    background-image: url("https://cdn.pixabay.com/photo/2015/09/15/15/53/bank-notes-941246_1280.jpg");
     font-size: 100px;
+    background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
 }
 
 section:nth-child(odd) {
-    background: #000;
+  background-image: url("https://cdn.pixabay.com/photo/2020/02/03/00/12/fiber-4814456_1280.jpg");
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+
 }
 
 .wrapper{
@@ -295,6 +316,7 @@ section:nth-child(odd) {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    
   }
   .wrapper .table{
     background: #fff;
@@ -303,6 +325,7 @@ section:nth-child(odd) {
     position: relative;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     text-align: center;
+    
   }
   .table .price-section{
     display: flex;
@@ -523,4 +546,62 @@ section:nth-child(odd) {
     text-align: center;
     font-size: 17px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.12);
+  }
+  h3 {
+    font-family: 'Quicksand', sans-serif;
+    color: #0a0a0a;
+  }
+  
+  .alert {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    animation: fade-in-out 0.5s;
+  }
+  
+  .close {
+    position: absolute;
+    padding-left: 30px;
+    width: 30px;
+    height: 30px;
+    opacity: 0.5;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 50%;
+    right: 15px;
+    top: 25px;
+    text-align: center;
+    font-size: 1.6em;
+    cursor: pointer;
+  }
+  
+  .simple-alert {
+    background-color: #ebebeb;
+    border-left: 5px solid #999;
+  }
+  
+  .success-alert {
+    background-color: #a8f0c6;
+    border-left: 5px solid #56b37f;
+  }
+  
+  .danger-alert {
+    background-color: #f7a7a3;
+    border-left: 5px solid #dd6951;
+  }
+  
+  .warning-alert {
+    background-color: #ffd48a;
+    border-left: 5px solid #e6b25c;
+  }
+  
+  .icon {
+    font-size: 24px;
+    margin-right: 10px;
   }

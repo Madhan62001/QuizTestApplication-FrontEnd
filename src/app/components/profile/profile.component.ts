@@ -1,7 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { ConnectionsService } from 'src/app/auth/connections.service';
 import { Router } from '@angular/router';
-
+//Payment Message Varala!
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -9,76 +9,90 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent {
 
-  name:String="";
-  email:String="";
-  jmon:String="";
-  jyr:String="";
-  sub:String="";
-  isMale:boolean=false;
-  isFemale:boolean=false;
-  isBot:boolean=false;
-  isSub:boolean=false;
-  tleft:number=0;
-  gender:String="";
+  name: String = "";
+  email: String = "";
+  jmon: String = "";
+  jyr: String = "";
+  sub: String = "";
+  isMale: boolean = false;
+  isFemale: boolean = false;
+  isBot: boolean = false;
+  isSub: boolean = false;
+  isq:boolean=false;
+  tleft: number = 0;
+  gender: String = "";
   paymentHandler: any = null;
-  isLogged:boolean=false;
-  amt:any;
-  dum:boolean=false;
-  constructor(private conn: ConnectionsService, private route:Router){}
-  doPerform(){
+  isLogged: boolean = false;
+  amt: any;
+  dum: boolean = false;
+  sucMsg: string = "";
+  errMsg: string = "";
+  warnMsg: string = "";
+  iserror: boolean = false;
+  isReg: boolean = false;
+  iswarn: boolean = false;
+  duration: number = 2000;
+  constructor(private conn: ConnectionsService, private route: Router) { }
+  doPerform() {
     this.conn.profile().subscribe({
-      next:(res)=>{
-        this.name=res.userName;
-        this.email=res.email;
-        this.jmon=res.joinMonth;
-        this.jyr=res.joinYear;
-        this.sub=res.subscribed;
-        this.tleft=res.turnsLeft;  
-        this.gender=res.gender;  
-        console.log(this.gender);    
-        if(this.sub=="true"){
-          this.isSub=true;
+      next: (res) => {
+        this.name = res.userName;
+        this.email = res.email;
+        this.jmon = res.joinMonth;
+        this.jyr = res.joinYear;
+        this.sub = res.subscribed;
+        this.tleft = res.turnsLeft;
+        this.gender = res.gender;
+        this.isq=res.isq;
+        console.log(this.gender);
+        if (this.sub == "true") {
+          this.isSub = true;
         }
-        if(this.gender=="male" || this.gender=="Male"){
-          this.isMale=true;
-        }else if(this.gender=="Female" || this.gender=="female"){
-          this.isFemale=true;
-        }else{
-          this.isBot=true;
+        if (this.gender == "male" || this.gender == "Male") {
+          this.isMale = true;
+        } else if (this.gender == "Female" || this.gender == "female") {
+          this.isFemale = true;
+        } else {
+          this.isBot = true;
         }
+        this.isReg = true;
+        this.sucMsg = "Profile Fetched!";
+        setTimeout(() => {
+          this.isReg = false;
+        }, this.duration);
       }
     });
   }
-  ngOnInit(){
+  ngOnInit() {
     this.doPerform();
     this.invokeStripe();
-    this.isLogged= JSON.parse(localStorage.getItem('isLoggedIn') || '{}');
+    this.isLogged = JSON.parse(localStorage.getItem('isLoggedIn') || '{}');
   }
-  ngDoCheck(){
-    if(this.dum){
+  ngDoCheck() {
+    if (this.dum) {
       this.setPayment();
-      this.dum=false;
+      this.dum = false;
     }
   }
-  setPayment(){
-    if(this.amt==29){
-      this.tleft=15;
+  setPayment() {
+    if (this.amt == 29) {
+      this.tleft = 15;
     }
-    else if(this.amt==59){
-      this.tleft=25;
+    else if (this.amt == 59) {
+      this.tleft = 25;
     }
-    else{
-      this.tleft=100;
+    else {
+      this.tleft = 100;
     }
-    const d={
-      t:this.tleft
+    const d = {
+      t: this.tleft
     }
     this.conn.subscription(d).subscribe({
-      next:(res: any)=>{
+      next: (res: any) => {
         console.log(res);
       }
     });
-    this.isSub=true;
+    this.isSub = true;
   }
 
   makePayment(amount: any) {
@@ -86,8 +100,12 @@ export class ProfileComponent {
       key: 'pk_test_51NZseaSGyDELcDVJzGeks6fCXMAqlrIXEwNRDrcY26ARh75H6EotDNLfOvkAWOOpFTcZntO3tL7FhNgqpIjMy4tY00zb4k2uC4',
       locale: 'auto',
       token: function (stripeToken: any) {
-        console.log(stripeToken);
-        alert('Payment Successful!');
+        console.log(stripeToken)
+        this.isReg = true;
+        this.sucMsg = "Payment Successful!";
+        setTimeout(() => {
+          this.isReg = false;
+        }, this.duration);
       },
     });
     paymentHandler.open({
@@ -95,8 +113,8 @@ export class ProfileComponent {
       description: '3 widgets',
       amount: amount * 100,
     });
-    this.amt=amount;
-    this.dum=true;
+    this.amt = amount;
+    this.dum = true;
   }
 
   invokeStripe() {
@@ -113,28 +131,32 @@ export class ProfileComponent {
             console.log(stripeToken);
             alert('Payment has been successfull!');
           },
-        }); 
+        });
       };
       window.document.body.appendChild(script);
     }
   }
 
-  toQuiz():void{
+  toQuiz(): void {
     this.route.navigate(['/quiz']);
   }
-  logout():void{
+  logout(): void {
     this.conn.logout().subscribe({
-      next:(res)=>{
+      next: (res) => {
         console.log(res);
-        this.isLogged=false;
-        localStorage.setItem("token",JSON.stringify(null));
-        localStorage.setItem("isLoggedIn",JSON.stringify(this.isLogged));
-        alert("Logged Out!");
+        this.isLogged = false;
+        localStorage.setItem("token", JSON.stringify(null));
+        localStorage.setItem("isLoggedIn", JSON.stringify(this.isLogged));
+        this.isReg = true;
+        this.sucMsg = "Logged Out!";
+        setTimeout(() => {
+          this.isReg = false;
+        }, this.duration);
       },
-      error:(e)=>console.error(e)
+      error: (e) => console.error(e)
     });
   }
-  nav():void{
+  nav(): void {
     this.route.navigate(['./board']);
   }
 
