@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControlName, FormGroup } from '@angular/forms';
 import { ConnectionsService } from 'src/app/auth/connections.service';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,10 @@ export class SgquizComponent {
   isLogged: boolean = false;
   hide: boolean = false;
   tolink: boolean = true;
+  qname: string = "";
+  // counter:number=30;
+  // validity:number=0;
+  tleft: number = 0;
   link: string = ""
   static questions: any[] = [];
   sucMsg: string = "";
@@ -22,6 +26,8 @@ export class SgquizComponent {
   isReg: boolean = false;
   iswarn: boolean = false;
   duration: number = 2000;
+  jlk: boolean = true;
+  dis:boolean=false;
   constructor(private fb: FormBuilder, private cons: ConnectionsService, private route: Router) {
     this.myForm = fb.group({
       question: [],
@@ -33,6 +39,19 @@ export class SgquizComponent {
     })
   }
   ngOnInit() {
+    this.cons.fetch().subscribe({
+      next: (res) => {
+        this.tleft = res.turnsLeft;
+        if (this.tleft == 0) {
+          this.iswarn = true;
+          this.warnMsg = "Your Quiz Turns Expired!";
+          this.dis=true;
+          setTimeout(() => {
+            this.iswarn = false;
+          }, 5000);
+        }
+      }
+    });
     this.isLogged = JSON.parse(localStorage.getItem('isLoggedIn') || '{}');
   }
   check(ans: any, s: string): any {
@@ -50,6 +69,18 @@ export class SgquizComponent {
       return d;
     }
   }
+  // check1(){
+  //   this.o.push(this.myForm.controls[FormControlName].value)
+  //   // for (let i = 0; i < options.length; i++) {
+  //   //   for (let j = i + 1; j < options.length; j++) {
+  //   //     if (options[i] === options[j]) {
+  //   //       return true; 
+  //   //     }
+  //   //   }
+  //   // }
+
+  //   return false;
+  // }
   assign(): void {
     let options: any[] = [];
     let ans = this.myForm.controls['cAnswer'].value;
@@ -66,7 +97,6 @@ export class SgquizComponent {
     this.sucMsg = "Question Added!";
     setTimeout(() => {
       this.isReg = false;
-      this.hide = true;
     }, this.duration);
   }
   submit() {
@@ -77,6 +107,7 @@ export class SgquizComponent {
   finished(): void {
     this.assign();
     const data = {
+      qname: this.qname,
       questions: SgquizComponent.questions
     }
     this.cons.passuserquiz(data).subscribe({
@@ -115,6 +146,12 @@ export class SgquizComponent {
   nav(): void {
     this.route.navigate(['./register']);
   }
+  fin(): void {
+    // console.log(this.qname);
+    // console.log(this.counter);
+    // console.log(this.validity);
+    this.jlk = false;
+  }
   logout(): void {
     this.cons.logout().subscribe({
       next: (res) => {
@@ -126,6 +163,7 @@ export class SgquizComponent {
         this.sucMsg = "Logged Out!";
         setTimeout(() => {
           this.isReg = false;
+          this.route.navigate(['./'])
         }, this.duration);
       },
       error: (e) => console.error(e)

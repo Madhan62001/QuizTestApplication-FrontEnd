@@ -78,7 +78,7 @@ export class AiquizComponent {
         this.iserror = true;
         setTimeout(() => {
           this.iserror = false;
-          this.route.navigate(['./login']);
+          this.route.navigate(['./register']);
         }, this.duration);
         console.error(e);
       }
@@ -109,6 +109,7 @@ export class AiquizComponent {
         this.sucMsg = "Logged Out!";
         setTimeout(() => {
           this.isReg = false;
+          this.route.navigate(['./'])
         }, this.duration);
       },
       error:(e)=>console.error(e)

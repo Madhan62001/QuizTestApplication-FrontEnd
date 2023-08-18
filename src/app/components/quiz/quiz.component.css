@@ -1,53 +1,108 @@
 *:after,
 *:before {
-  box-sizing:initial;
+  box-sizing: initial;
 
 }
+
 body {
   font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
- 
-  background: -webkit-linear-gradient(to left, #fdbb2d, #22c1c3);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #fdbb2d, #22c1c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+  background: -webkit-linear-gradient(to right, #0ED2F7, #B2FEFA);  
+  background: linear-gradient(to right, #0ED2F7, #B2FEFA); 
   height: 90vh;
   width: 100%;
   display: flex;
   align-items: center;
 
 }
+
 header {
 
   width: 100%;
-margin-bottom: 0;
+  margin-bottom: 0;
   display: flex;
-
+  height: 80px;
   align-items: center;
   padding: 20px 5%;
-
-  background-color: #ffc649;
+  background-color: #0B666A;
 
 }
 
-
+li,
+a,
+button {
+  font-family: "montserrat", sans-serif;
+  font-weight: 500;
+  font-style: 20px;
+  color: #fff;
+  text-decoration: none;
+}
 
 .logo {
-  margin: 0;
+  margin-right: auto;
   cursor: pointer;
-  color: #179ea6;
-  font-size: 29px;
+  color: #fff;
+  font-weight: 20px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  padding: 10px;
+  display: none;
+  position: absolute;
+  background: #97FEED;
+  padding-left: 20px;
+  min-width: 100px;
+  height: 100px;
+  border-radius: 10%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.dropdown-content a{
+  color: #000;
+  padding-bottom: 10px;
+}
+.dropdown-content a:hover{
+  color:#35A29F
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  vertical-align: middle;
+  transition: transform 0.3s ease-in-out;
+}
+
+.dropbtn:hover .profile-icon {
+  transform: scale(1.1);
 }
 
 .toname {
   max-width: 600px;
   margin: 50px auto;
+  margin-top: -30px;
   padding: 20px;
- /* From https://css.glass */
-background: rgba(198, 211, 215, 0.2);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(255, 255, 255, 0.3);
+  /* From https://css.glass */
+  background: rgba(198, 211, 215, 0.159);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -64,7 +119,7 @@ input[type="text"] {
 
 button {
   background-color: #123d7e;
-  height:50px;
+  height: 50px;
   color: #fff;
   border: none;
   padding: 12px 20px;
@@ -77,15 +132,16 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
 .card {
   max-width: 800px;
- /* From https://css.glass */
-background: rgba(225, 217, 215, 0.2);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(255, 255, 255, 0.3);
+  /* From https://css.glass */
+  background: rgba(225, 217, 215, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   margin: 0 auto;
   padding: 10px;
 }
@@ -105,7 +161,7 @@ ol {
 }
 
 
-.opt-2{
+.opt-2 {
   display: inline-block;
   outline: 0;
   border: 0;
@@ -115,14 +171,15 @@ ol {
   font-size: 18px;
   font-weight: 700;
   line-height: 1;
-  transition: transform 200ms,background 200ms;
+  transition: transform 200ms, background 200ms;
   background: transparent;
-  color: #fbdc61;
-  box-shadow: 0 0 0 3px #fbdc61 inset;
+  color: #090909;
+  box-shadow: 0 0 0 3px #050505 inset;
 
-  
+
 }
-.opt-2:hover{
+
+.opt-2:hover {
   transform: translateY(-2px);
   color: #000;
   background-color: #fbdc61;

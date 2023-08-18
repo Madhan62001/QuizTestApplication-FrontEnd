@@ -25,12 +25,11 @@ export class QuizComponent {
   progress: string = "0";
   isQuizCompleted : boolean = false;
   dupCompleted: boolean=false;
+  isLogged:boolean=false;
   constructor(private conn:ConnectionsService, private route:Router) { }
 
   ngOnInit(): void {
-    //this.name = localStorage.getItem("UName")!;
-    //this.start();
-    //this.startCounter();
+    this.isLogged= JSON.parse(localStorage.getItem('isLoggedIn') || '{}');
   }
   goOn():void{
     this.isFirst=true;
@@ -58,6 +57,9 @@ export class QuizComponent {
       })
       this.dupCompleted=false;
     }
+  }
+  nav():void{
+    this.route.navigate(['./register']);
   }
   start(link:string):void {
     this.conn.getQuestions(link).subscribe(res => {

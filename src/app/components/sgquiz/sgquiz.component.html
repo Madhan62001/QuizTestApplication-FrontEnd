@@ -5,11 +5,20 @@
   <nav>
     <ul class="nav_links">
       <li><a href="http://localhost:4200/aiquiz">AI Quiz</a></li>
+      <li class="dropdown" *ngIf="this.isLogged" >
+				<a class="dropbtn">
+				  <img src="https://cdn.iconscout.com/icon/free/png-256/free-profile-417-1163876.png?f=webp" alt="Profile Icon" class="profile-icon">
+				</a>
+				<div class="dropdown-content">
+				  <a href="">Home</a><br>
+				  <a href="http://localhost:4200/profile">Profile</a><br>
+				  <a (click)="this.logout()">Logout</a><br>
+				</div>
+			</li>
     </ul>
   </nav>
   <a *ngIf="!this.isLogged" class="cta" href="http://localhost:4200/register"><button class="cta1"
       (click)="this.nav()">LOGIN</button></a>
-  <a class="cta" *ngIf="this.isLogged"><button class="cta1" (click)="this.logout()">Logout</button></a>
 </header>
 
 <body>
@@ -27,10 +36,15 @@
     <div class="icon">&#9888;</div>
     <h3>{{this.warnMsg}}</h3>
   </div>
+  <div class="details" *ngIf="this.jlk" style="align-items: center; margin-top: 50px;">
+    <label>Name Of The Quiz:</label>
+    <input type="text" placeholder="Enter the name of the Quiz" [(ngModel)]="this.qname" required=""><br><br>
+    <button (click)="this.fin()" style="margin-left: 650px;" [disabled]="this.dis">Add Questions!</button>
+  </div>
 
-  <div *ngIf="!this.hide">
+  <div *ngIf="!this.hide && !this.jlk">
     <form [formGroup]="myForm" (ngSubmit)="submit()">
-      <label>Question Goes here </label>
+      <label>Question Goes here:</label>
       <input formControlName="question" type="text" placeholder="Enter your Question" required="" /><br><br>
       <label>Answer Options:</label><br>
       <input formControlName="answer1" type="text" placeholder="Enter Option 1" required=""><br>
@@ -40,9 +54,9 @@
 
       <label>Correct Answer </label>
       <input formControlName="cAnswer" type="text" placeholder="Enter the Correct Option" required="" /><br><br>
-      <button type="submit">Add Another!</button><br><br>
+      <button type="submit" [disabled]="this.dis">Add Another!</button><br>
+      <button (click)="this.finished()" [disabled]="this.dis">Finished!</button>
     </form>
-    <button (click)="this.finished()">Finished!</button>
   </div>
   <div class="link-section" *ngIf="this.hide">
     <h2>Id Of the Quiz: {{this.link}}</h2>

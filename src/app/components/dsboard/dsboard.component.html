@@ -10,6 +10,16 @@
     <h3 class="logo" routerLink="">QUIZKR</h3>
     <nav>
       <ul class="nav_links">
+        <li class="dropdown" *ngIf="this.isLogged" >
+          <a class="dropbtn">
+            <img src="https://cdn.iconscout.com/icon/free/png-256/free-profile-417-1163876.png?f=webp" alt="Profile Icon" class="profile-icon">
+          </a>
+          <div class="dropdown-content">
+            <a href="">Home</a><br>
+            <a href="http://localhost:4200/profile">Profile</a><br>
+            <a (click)="this.logout()">Logout</a><br>
+          </div>
+        </li>
         <li><a id="gquiz" href="http://localhost:4200/sgquiz">Generate Quiz</a></li>
       </ul>
     </nav>
@@ -28,7 +38,7 @@
     <div class="icon">&#9888;</div>
     <h3>{{this.warnMsg}}</h3>
   </div>
-  <div class="container">
+  <div class="container" style="margin-bottom: 50px; background-color: #B2FEFA;">
     <div *ngIf="!isStart" class="message">
       <p>DashBoard Works!</p>
     </div>
@@ -40,11 +50,11 @@
         <p>Incorrect Answers: {{students[currentStudentIndex].inAns}}</p>
       </div>
       <div class="navigation">
-        <button (click)="prevStudent()" [disabled]="currentStudentIndex === 0">Previous</button>
+        <button (click)="prevStudent()" [disabled]="currentStudentIndex === 0" style="margin: 10px;">Previous</button>
         <button (click)="nextStudent()" [disabled]="currentStudentIndex === students.length - 1">Next</button>
       </div>
     </div>
-    <div class="leaderboard">
+    <div class="leaderboard" *ngIf="this.isStart">
       <h3>Leaderboard</h3>
       <ol>
         <li *ngFor="let student of getTopStudents(); let i = index">
@@ -52,7 +62,7 @@
         </li>
       </ol>
     </div>
-    <div class="analytics">
+    <div class="analytics" *ngIf="this.isStart">
       <h3>Performance Analytics</h3>
       <p>Average Score: {{ calculateAverageScore() }}</p>
       <p>Highest Score: {{ calculateHighestScore() }}</p>

@@ -44,7 +44,7 @@ export class ProfileComponent {
         this.tleft = res.turnsLeft;
         this.gender = res.gender;
         this.isq=res.isq;
-        console.log(this.gender);
+        console.log(this.isq);
         if (this.sub == "true") {
           this.isSub = true;
         }
@@ -151,6 +151,7 @@ export class ProfileComponent {
         this.sucMsg = "Logged Out!";
         setTimeout(() => {
           this.isReg = false;
+          this.route.navigate(['/']);
         }, this.duration);
       },
       error: (e) => console.error(e)

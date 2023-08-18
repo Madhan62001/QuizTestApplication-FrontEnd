@@ -4,11 +4,21 @@
 	  <h3 class="logo" routerLink="">QUIZKR</h3>
 	<nav>
 		<ul class="nav_links">
-			<li><a href="http://localhost:4200/sgquiz">Generate Quiz</a></li>
+			<li><a href="http://localhost:4200/sgquiz" style="font-weight: 25px;">Generate Quiz</a></li>
+			<li class="dropdown" *ngIf="this.isLogged" >
+				<a class="dropbtn">
+				  <img src="https://cdn.iconscout.com/icon/free/png-256/free-profile-417-1163876.png?f=webp" alt="Profile Icon" class="profile-icon">
+				</a>
+				<div class="dropdown-content">
+				  <a href="">Home</a><br>
+				  <a href="http://localhost:4200/profile">Profile</a><br>
+				  <a (click)="this.logout()">Logout</a><br>
+				</div>
+			</li>
 		</ul>
 	</nav>
-	<a routerLink="register" *ngIf="!this.isLogged" class="cta" ><button class="cta1" (click)="this.nav()">LOGIN</button></a>
-	<a class="cta" *ngIf="this.isLogged" ><button class="cta1" (click)="this.logout()">Logout</button></a>
+	<a *ngIf="!this.isLogged" class="cta" routerLink="register"><button class="cta1" (click)="this.nav()">LOGIN</button></a>
+	<!-- <a class="cta" *ngIf="this.isLogged" ><button class="cta1" (click)="this.logout()">Logout</button></a> -->
 </header>
 <body>
 	<div class="alert success-alert" *ngIf="this.isReg">
@@ -26,13 +36,13 @@
 		<h3>{{this.warnMsg}}</h3>
 	  </div>
 <fieldset class="checkbox-group" *ngIf="!this.isLoading && this.isreceived">
-	<legend class="checkbox-group-legend">Select Topics For Quiz Generation</legend>
+	<legend class="checkbox-group-legend" style="color: black;">Select Topics For Quiz Generation</legend>
 	<div class="checkbox">
 		<label class="checkbox-wrapper">
 			<input type="checkbox" class="checkbox-input" [(ngModel)]="this.historyChecked" />
 			<span class="checkbox-tile">
 				<span class="checkbox-icon">
-					<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="currentColor" viewBox="0 0 256 256">
+					<!-- <svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="currentColor" viewBox="0 0 256 256">
 						<rect width="256" height="256" fill="none"></rect>
 						<circle cx="96" cy="144.00002" r="10"></circle>
 						<circle cx="160" cy="144.00002" r="10"></circle>
@@ -40,7 +50,19 @@
 						<path d="M181.59717,176.00041A175.32523,175.32523,0,0,1,128,184a175.32505,175.32505,0,0,1-53.59753-7.99971" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
 						<path d="M155.04392,182.08789l12.02517,24.05047a7.96793,7.96793,0,0,0,8.99115,4.20919c24.53876-5.99927,45.69294-16.45908,61.10024-29.85086a8.05225,8.05225,0,0,0,2.47192-8.38971L205.65855,58.86074a8.02121,8.02121,0,0,0-4.62655-5.10908,175.85294,175.85294,0,0,0-29.66452-9.18289,8.01781,8.01781,0,0,0-9.31925,5.28642l-7.97318,23.91964" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
 						<path d="M100.95624,182.08757l-12.02532,24.0508a7.96794,7.96794,0,0,1-8.99115,4.20918c-24.53866-5.99924-45.69277-16.459-61.10006-29.85069a8.05224,8.05224,0,0,1-2.47193-8.38972L50.34158,58.8607a8.0212,8.0212,0,0,1,4.62655-5.1091,175.85349,175.85349,0,0,1,29.66439-9.18283,8.0178,8.0178,0,0,1,9.31924,5.28642l7.97318,23.91964" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
-					</svg>
+					</svg> -->
+					<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+						<rect x="0" y="0" width="300" height="200" fill="black" />
+						<circle cx="150" cy="100" r="10" fill="none" stroke="white" stroke-width="2" />
+						<circle cx="150" cy="100" r="30" fill="none" stroke="white" stroke-width="2" />
+						<circle cx="150" cy="100" r="50" fill="none" stroke="white" stroke-width="2" />
+						<circle cx="150" cy="100" r="70" fill="none" stroke="white" stroke-width="2" />
+						<line x1="50" y1="50" x2="250" y2="150" stroke="white" stroke-width="2" />
+						<line x1="50" y1="150" x2="250" y2="50" stroke="white" stroke-width="2" />
+						<rect x="100" y="50" width="100" height="100" fill="none" stroke="white" stroke-width="2" />
+						<line x1="0" y1="0" x2="300" y2="200" stroke="white" stroke-width="2" />
+						<line x1="0" y1="200" x2="300" y2="0" stroke="white" stroke-width="2" />
+					</svg>  
 				</span>
 				<span class="checkbox-label">History</span>
 			</span>
@@ -100,9 +122,11 @@
 					<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="currentColor" viewBox="0 0 256 256">
 						<rect width="256" height="256" fill="none"></rect>
 						<circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></circle>
-						<path d="M71.0247,205.27116a159.91145,159.91145,0,0,1,136.98116-77.27311q8.09514,0,15.99054.78906" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
-						<path d="M188.0294,53.09083A159.68573,159.68573,0,0,1,64.00586,111.99805a160.8502,160.8502,0,0,1-30.15138-2.83671" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
-						<path d="M85.93041,41.68508a159.92755,159.92755,0,0,1,78.99267,138.00723,160.35189,160.35189,0,0,1-4.73107,38.77687" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
+						<g>
+							<path d="M179.1333,108.32931a112.19069,112.19069,0,0,0-102.3584.04859" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
+							<path d="M164.29541,136.71457a79.94058,79.94058,0,0,0-72.68359.04736" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
+							<path d="M149.47217,165.07248a47.97816,47.97816,0,0,0-43.03662.04736" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
+						</g>
 					</svg>
 				</span>
 				<span class="checkbox-label">Music</span>
@@ -117,14 +141,12 @@
 					<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="currentColor" viewBox="0 0 256 256">
 						<rect width="256" height="256" fill="none"></rect>
 						<circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></circle>
-						<g>
-							<path d="M179.1333,108.32931a112.19069,112.19069,0,0,0-102.3584.04859" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
-							<path d="M164.29541,136.71457a79.94058,79.94058,0,0,0-72.68359.04736" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
-							<path d="M149.47217,165.07248a47.97816,47.97816,0,0,0-43.03662.04736" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
-						</g>
+						<path d="M71.0247,205.27116a159.91145,159.91145,0,0,1,136.98116-77.27311q8.09514,0,15.99054.78906" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
+						<path d="M188.0294,53.09083A159.68573,159.68573,0,0,1,64.00586,111.99805a160.8502,160.8502,0,0,1-30.15138-2.83671" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
+						<path d="M85.93041,41.68508a159.92755,159.92755,0,0,1,78.99267,138.00723,160.35189,160.35189,0,0,1-4.73107,38.77687" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
 					</svg>
 				</span>
-				<span class="checkbox-label">OutDoor Games</span>
+				<span class="checkbox-label">Games</span>
 			</span>
 		</label>
 	</div>
@@ -163,14 +185,27 @@
 						<path d="M80,128v24a24,24,0,0,1-24,24h0a24,24,0,0,1-24-24v0a24,24,0,0,1,24-24Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
 					</svg>
 				</span>
-				<span class="checkbox-label">General Knowledge</span>
+				<span class="checkbox-label">GK</span>
 			</span>
 		</label>
 	</div>
 	<button class="opt-2" style="position: relative;" (click)="this.submit()">Proceed to Quiz</button>
 </fieldset>
 <div *ngIf="this.isLoading && this.isreceived">
-	<span class="loader"></span>
+	<svg class="pl" viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+		<defs>
+			<linearGradient id="pl-grad1" x1="1" y1="0.5" x2="0" y2="0.5">
+				<stop offset="0%" stop-color="hsl(313,90%,55%)" />
+				<stop offset="100%" stop-color="hsl(223,90%,55%)" />
+			</linearGradient>
+			<linearGradient id="pl-grad2" x1="0" y1="0" x2="0" y2="1">
+				<stop offset="0%" stop-color="hsl(313,90%,55%)" />
+				<stop offset="100%" stop-color="hsl(223,90%,55%)" />
+			</linearGradient>
+		</defs>
+		<circle class="pl__ring" cx="100" cy="100" r="82" fill="none" stroke="url(#pl-grad1)" stroke-width="36" stroke-dasharray="0 257 1 257" stroke-dashoffset="0.01" stroke-linecap="round" transform="rotate(-90,100,100)" />
+		<line class="pl__ball" stroke="url(#pl-grad2)" x1="100" y1="18" x2="100.01" y2="182" stroke-width="36" stroke-dasharray="1 165" stroke-linecap="round" />
+	</svg>
 </div>
 <div class="link-section" *ngIf="this.isLoading && this.load ">
     <h2>Id Of the Quiz: {{this.link}}</h2>

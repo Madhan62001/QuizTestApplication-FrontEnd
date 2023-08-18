@@ -1,25 +1,56 @@
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+
 <header>
+  <img src="../assets/download.jpeg" style="margin-right: 10px; margin-left: -20px;"  class="profile-icon">
   <h3 class="logo">QUIZKR</h3>
     <nav>
     <ul class="nav_links">
       <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">Contact</a></li>
     </ul>
     </nav>
     <button class="arrow-button"  (click)="this.toQuiz()"><a class="og-arrow"routerLink="quiz" href="">Take Instant Quiz</a><span class="arrow"></span>
     </button>
+    <nav>
+      <ul class="nav_links">
+        <li class="dropdown" *ngIf="this.isLogged" >
+          <a class="dropbtn">
+            <img src="https://cdn.iconscout.com/icon/free/png-256/free-profile-417-1163876.png?f=webp" alt="Profile Icon" class="profile-icon">
+          </a>
+          <div class="dropdown-content">
+            <a href="">Home</a><br>
+            <a href="http://localhost:4200/profile">Profile</a><br>
+            <a (click)="this.logout()">Logout</a><br>
+          </div>
+        </li>
+      </ul>
+    </nav>
     <a routerLink="register" *ngIf="!this.isLogged" class="cta" href="#"><button class="cta1" (click)="this.nav()">LOGIN</button></a>
-    <a class="cta" *ngIf="this.isLogged" routerLink="profile"><button class="cta1" (click)="this.profile()">Profile</button></a>
 </header>
 <body>
+  <div class="alert success-alert" *ngIf="this.isReg">
+		<div class="icon">&#10004;</div>
+		<h3>{{this.sucMsg}}</h3>
+	  </div>
+	
+	  <div class="alert danger-alert" *ngIf="this.iserror">
+		<div class="icon">&#10060;</div>
+		<h3>{{this.errMsg}}</h3>
+	  </div>
+	
+	  <div class="alert warning-alert" *ngIf="this.iswarn">
+		<div class="icon">&#9888;</div>
+		<h3>{{this.warnMsg}}</h3>
+	  </div>
   <section id="home">
     <div class="card-container">
       <div class="card">
         <!-- <div class="card-image1"></div> -->
         <div class="card-content">
-          <h2 class="card-title">Experience AI Quiz</h2>
-          <p class="card-text">Get Ready to unravel the mysteries of AI and put your knowledge to the test, buckle up and 
+          <h2 class="card-title"><b>Experience AI Quiz</b></h2>
+          <p class="card-text" style="font-size: 16px;">Get Ready to unravel the mysteries of AI and put your knowledge to the test, buckle up and 
               embark on this exciting quiz adventure!</p>
           <button class="btn" (click)="this.aiquiz()">AI Quiz</button>
         </div>
@@ -27,16 +58,48 @@
       <div class="card">
         <!-- <div class="card-image2"></div> -->
         <div class="card-content">
-          <h2 class="card-title">Generate Your Own Quiz</h2>
-          <p class="card-text">Get ready to dive into a world of user-generated questions that will both entertain and challenge you ajksksksksksksk!</p>
+          <h2 class="card-title"><b>Generate Your Own Quiz</b></h2>
+          <p class="card-text" style="font-size: 16px;">Get ready to dive into a world of user-generated questions that will both entertain and challenge you #QuizEnthusiacist!</p>
           <button class="btn" (click)="this.sgquiz()">Generate</button>
         </div>
       </div>
     </div>
   </section>
   <section id="about">
-    About
+    <div class="container" style="margin-top: 150px;">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+            <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+              <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
+            </div>
+            <div class="single_advisor_details_info">
+              <h5 style="color: brown;"><b>Madhan Kishore</b></h5>
+              <p class="designation">Developer  </p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contain">
+      <div class="contact-card">
+        <div class="contact-form" style="width: 800px;">
+          <h2 style="padding-bottom: 10px;"><b>Contact Us</b></h2>
+          <p><i>We'd love to hear from you! Send us your feedback.</i></p>
+          <form style="padding-top: 20px;">
+            <div class="form-group">
+              <label for="email"><b>Your Email:</b></label>
+              <input type="email" id="email" name="email" [(ngModel)]="this.email" required>
+            </div>
+            <div class="form-group">
+              <label for="message"><b>Your Feedback:</b></label>
+              <textarea id="message" name="message" rows="4" [(ngModel)]="this.feed" required></textarea>
+            </div>
+            <button type="submit" (click)="this.submit()">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </section>
-  <section id="contact">Contact</section>
-
 </body>

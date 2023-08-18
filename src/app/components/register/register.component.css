@@ -3,18 +3,18 @@
 
 body {
   font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
-  ;
   font-weight: 300;
   font-size: 15px;
   line-height: 1.7;
   color: #c4c3ca;
-  background-color: #0a0a0a;
+  background: -webkit-linear-gradient(to right, #0ED2F7, #B2FEFA);
+  background: linear-gradient(to right, #0ED2F7, #B2FEFA);
   overflow-x: hidden;
 }
 
 .logo {
   font-family: "montserrat", sans-serif;
-  font-weight: 600;
+  font-weight: 20px;
   margin-right: auto;
   cursor: pointer;
   color: white;
@@ -28,7 +28,7 @@ header {
   justify-content: flex-end;
   align-items: center;
   padding: 1px 5%;
-  background-color: #004f88;
+  background-color: #0B666A;
   z-index: 9999;
   top: 0;
 }
@@ -38,7 +38,7 @@ a {
   font-family: "montserrat", sans-serif;
   font-weight: 500;
   font-style: 16px;
-  color: #edf0f1;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -58,7 +58,7 @@ a {
 }
 
 .nav_links li a:hover {
-  color: #ffc259;
+  color: #4982FF;
 }
 
 .cta1 {
@@ -120,7 +120,7 @@ h6 span {
   padding: 0;
   margin: 10px auto;
   cursor: pointer;
-  background-color: #ffeba7;
+  background-color: #fff;
 }
 
 .checkbox:checked+label:before,
@@ -130,8 +130,8 @@ h6 span {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  color: #ffeba7;
-  background-color: #102770;
+  color: #fff;
+  background-color: #071952;
   font-family: 'unicons';
   content: '\eb4f';
   z-index: 20;
@@ -174,7 +174,7 @@ h6 span {
 .card-back {
   width: 100%;
   height: 100%;
-  background-color: #2a2b38;
+  background-color: #071952;/*#36374e*/                                 
   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
   background-position: bottom center;
   background-repeat: no-repeat;
@@ -340,13 +340,13 @@ h6 span {
 
 .btn:active,
 .btn:focus {
-  background-color: #102770;
+  background-color: #0B666A;
   color: #ffeba7;
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, .2);
 }
 
 .btn:hover {
-  background-color: #102770;
+  background-color: #0B666A;
   color: #ffeba7;
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, .2);
 }

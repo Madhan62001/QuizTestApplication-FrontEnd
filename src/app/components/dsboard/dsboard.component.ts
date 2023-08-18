@@ -18,12 +18,13 @@ export class DsboardComponent {
   isReg: boolean = false;
   iswarn: boolean = false;
   duration: number = 2000;
-  constructor(private conn: ConnectionsService) { }
+  isLogged:boolean=false;
+  constructor(private conn: ConnectionsService, private route:Router) { }
   ngOnInit() {
+    this.isLogged= JSON.parse(localStorage.getItem('isLoggedIn') || '{}');
     this.conn.dsboard().subscribe({
       next: (res) => {
-        if (res.users) {
-          console.log("Came!");
+        if (!res.attend) {
           this.isStart = false;
           this.iswarn = true;
           this.warnMsg = "No Attendees Yet!";
@@ -42,8 +43,6 @@ export class DsboardComponent {
             this.students.push(d);
           }
         }
-        // console.log(this.students);
-        //console.log(this.students);
       }
     })
   }
@@ -74,4 +73,21 @@ export class DsboardComponent {
     return Math.min(...this.students.map(student => student.points));
   }
 
+  logout():void{
+    this.conn.logout().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.isLogged = false;
+        localStorage.setItem("token", JSON.stringify(null));
+        localStorage.setItem("isLoggedIn", JSON.stringify(this.isLogged));
+        this.isReg=true;
+        this.sucMsg = "Logged Out!";
+        setTimeout(() => {
+          this.isReg = false;
+          this.route.navigate(['./']);
+        }, this.duration);
+      },
+      error:(e)=>console.error(e)
+    });
+  }
 }

@@ -63,4 +63,8 @@ export class ConnectionsService {
     let api_URL=url+'/sub';
     return this.http.post(api_URL,d,{withCredentials:true});
   }
+  fetch():Observable<any>{
+    let api_URL=url+'/fetch';
+    return this.http.get(api_URL,{withCredentials:true});
+  }
 }
