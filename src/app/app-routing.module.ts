@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DsboardComponent } from './components/dsboard/dsboard.component';
+import { FpasswordComponent } from './components/fpassword/fpassword.component';
 
 const routes: Routes = [
   {path:"register",component:RegisterComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:"aiquiz",component:AiquizComponent},
   {path:"quiz",component:QuizComponent},
   {path:"profile",component:ProfileComponent},
-  {path:"board",component:DsboardComponent}
+  {path:"board",component:DsboardComponent},
+  {path:"pass",component:FpasswordComponent}
 ];
 
 @NgModule({

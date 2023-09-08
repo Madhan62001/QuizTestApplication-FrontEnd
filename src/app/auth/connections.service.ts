@@ -67,4 +67,12 @@ export class ConnectionsService {
     let api_URL=url+'/fetch';
     return this.http.get(api_URL,{withCredentials:true});
   }
+  mail(data:any):Observable<any>{
+    let api_URL=url+'/mail';
+    return this.http.post(api_URL,data);
+  }
+  reset(data:any):Observable<any>{
+    let api_URL=url+'/reset';
+    return this.http.post(api_URL,data);
+  }
 }

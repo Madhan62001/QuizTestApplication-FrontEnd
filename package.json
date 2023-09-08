@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
     "@auth0/angular-jwt": "^5.1.2",
+    "@ionic/angular": "^7.3.3",
     "@ng-bootstrap/ng-bootstrap": "^15.1.0",
     "@stripe/stripe-js": "^1.54.1",
     "angularx-social-login": "^4.1.0",

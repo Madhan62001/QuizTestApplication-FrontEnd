@@ -27,6 +27,8 @@ export class RegisterComponent {
   users: any[] = [];
   emails: any[] = [];
   isValid:boolean=true;
+  isPasswordVisible: boolean = false;
+  show:string="password";
   constructor(private route: Router, private connection: ConnectionsService) { }
 
   ngOnInit() {
@@ -35,7 +37,10 @@ export class RegisterComponent {
         this.users = res.usernames;
         this.emails = res.emails;
       }
-    })
+    });
+    localStorage.removeItem('mail');
+    localStorage.setItem('hide', JSON.stringify(false));
+    localStorage.setItem('temp',JSON.stringify(false));
   }
   check(){
     //console.log("Comes Here!");
@@ -139,5 +144,13 @@ export class RegisterComponent {
         console.error(e);
       }
     });
+  }
+  togglePasswordVisibility(): void {
+    this.isPasswordVisible=!this.isPasswordVisible;
+    if(this.isPasswordVisible){
+      this.show="text";
+    }else{
+      this.show="password";
+    }
   }
 }

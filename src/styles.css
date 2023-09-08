@@ -1,1 +1,48 @@
 @import url("../node_modules/bootstrap/dist/css/bootstrap.css");
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* border-radius: 20px; */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #35A29F;
+  /* border-radius: 2px;  */
+}
+
+/* :theme1 {
+  --primary-color: #007bff;
+  --background-color: #eb4f4f;
+}
+:theme2 {
+  --primary-color: #ff9900;
+  --background-color: #333333;
+} */
+/* 
+:root {
+  --primary-color: var(--primary-color);
+  --background-color: var(--background-color);
+} */
+
+:root {
+  --primary-color-light: #007bff;
+  --background-color-light: #ffffff;
+  
+  --primary-color-dark: #ff9900;
+  --background-color-dark: #333333;
+}
+
+.light-theme {
+  --primary-color: var(--primary-color-light);
+  --background-color: var(--background-color-light);
+}
+
+.dark-theme {
+  --primary-color: var(--primary-color-dark);
+  --background-color: var(--background-color-dark);
+}

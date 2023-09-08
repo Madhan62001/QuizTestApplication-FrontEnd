@@ -23,13 +23,15 @@ export class HomeComponent {
   name:string="";
   constructor(private route:Router, private connection:ConnectionsService){}
   ngOnInit(){
-    this.connection.fetch().subscribe({
-      next: (res) => {
-        this.name = res.name;
-        //console.log(res);
-      }
-    });
     this.isLogged= JSON.parse(localStorage.getItem('isLoggedIn') || '{}');
+    if(this.isLogged){
+      this.connection.fetch().subscribe({
+        next: (res) => {
+          this.name = res.name;
+          //console.log(res);
+        }
+      });
+    }
   }
   sgquiz():void{
     this.but=true;

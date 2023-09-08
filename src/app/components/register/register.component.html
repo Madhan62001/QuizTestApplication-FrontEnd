@@ -67,7 +67,7 @@
                                                 </div>
                                                 <button type="submit" class="btn mt-4"
                                                     [disabled]="loginForm.invalid">Submit</button>
-                                                <p class="mb-0 mt-4 text-center"><a href="#0" class="link"
+                                                <p class="mb-0 mt-4 text-center"><a href="http://localhost:4200/pass" class="link"
                                                         style="text-decoration: none;">Forgot your
                                                         password?</a></p>
                                             </form>
@@ -75,9 +75,9 @@
                                     </div>
                                 </div>
                                 <div class="card-back">
-                                    <div class="center-wrap">
+                                    <div class="center-wrap" >
                                         <div class="section text-center">
-                                            <h4 class="mb-4 pb-3" style="margin-bottom: -50px;">Sign Up</h4>
+                                            <h4 class="mb-4 pb-3" style="margin-bottom: -100px;">Sign Up</h4>
                                             <form (ngSubmit)="register()" #registrationForm="ngForm" novalidate>
                                                 <div class="form-group">
                                                     <input type="text" name="userName" class="form-style"
@@ -102,7 +102,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group mt-2">
-                                                    <input type="password" name="password" class="form-style"
+                                                    <input type="{{this.show}}" name="password" class="form-style"
                                                         placeholder="Your Password" id="password" [(ngModel)]="password"
                                                         ngModel #passwordInput="ngModel" required>
                                                     <i class="input-icon uil uil-lock-alt"></i>
@@ -114,7 +114,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group mt-2">
-                                                    <input type="password" name="cpassword" class="form-style"
+                                                    <input type="{{this.show}}" name="cpassword" class="form-style"
                                                         placeholder="Confirm Password" id="cpassword"
                                                         [(ngModel)]="cpassword" ngModel #cpasswordInput="ngModel"
                                                         required>
@@ -127,6 +127,11 @@
                                                         Passwords do not match.
                                                     </div>
                                                 </div>
+                                                <label>
+                                                    Show Password
+                                                    <input type="checkbox" name="sp" [(ngModel)]="this.isPasswordVisible" (click)="this.togglePasswordVisibility()"/>
+                                                    <span class="checkmark" [class.checked]="isPasswordVisible"></span>
+                                                </label>
                                                 <button type="submit" class="btn mt-4"
                                                     [disabled]="this.isValid && registrationForm.invalid">Submit</button>
                                             </form>

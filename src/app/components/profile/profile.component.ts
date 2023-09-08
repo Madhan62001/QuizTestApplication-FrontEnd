@@ -32,6 +32,7 @@ export class ProfileComponent {
   isReg: boolean = false;
   iswarn: boolean = false;
   duration: number = 2000;
+  isLoad:boolean=true;
   constructor(private conn: ConnectionsService, private route: Router) { }
   doPerform() {
     this.conn.profile().subscribe({
@@ -55,11 +56,12 @@ export class ProfileComponent {
         } else {
           this.isBot = true;
         }
-        this.isReg = true;
-        this.sucMsg = "Profile Fetched!";
-        setTimeout(() => {
-          this.isReg = false;
-        }, this.duration);
+        // this.isReg = true;
+        this.isLoad=false;
+        // this.sucMsg = "Profile Fetched!";
+        // setTimeout(() => {
+        //   this.isReg = false;
+        // }, this.duration);
       }
     });
   }
@@ -93,6 +95,11 @@ export class ProfileComponent {
       }
     });
     this.isSub = true;
+    this.isReg=true;
+    this.sucMsg="Payment SuccessFul!";
+    setTimeout(() => {
+      this.isReg = false;
+    }, 10000);
   }
 
   makePayment(amount: any) {
@@ -101,11 +108,6 @@ export class ProfileComponent {
       locale: 'auto',
       token: function (stripeToken: any) {
         console.log(stripeToken)
-        this.isReg = true;
-        this.sucMsg = "Payment Successful!";
-        setTimeout(() => {
-          this.isReg = false;
-        }, this.duration);
       },
     });
     paymentHandler.open({

@@ -162,7 +162,7 @@ h6 span {
 .card-3d-wrapper {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   -webkit-transform-style: preserve-3d;
@@ -173,7 +173,7 @@ h6 span {
 .card-front,
 .card-back {
   width: 100%;
-  height: 100%;
+  height: 480px;
   background-color: #071952;/*#36374e*/                                 
   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
   background-position: bottom center;
@@ -408,4 +408,32 @@ h3 {
 .icon {
   font-size: 24px;
   margin-right: 10px;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-left: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkmark::before {
+  content: '\2713'; /* Unicode checkmark character */
+  color: transparent;
+}
+
+.checkmark.checked::before {
+  color: #007bff;
+}
+label {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  padding-left: 115px;
 }

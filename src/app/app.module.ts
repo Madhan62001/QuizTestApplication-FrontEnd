@@ -20,7 +20,9 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { ChangeBgDirective } from './change-bg.directive';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './components/profile/profile.component';
-import { DsboardComponent } from './components/dsboard/dsboard.component'; 
+import { DsboardComponent } from './components/dsboard/dsboard.component';
+import { FpasswordComponent } from './components/fpassword/fpassword.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { DsboardComponent } from './components/dsboard/dsboard.component';
     QuizComponent,
     ChangeBgDirective,
     ProfileComponent,
-    DsboardComponent
+    DsboardComponent,
+    FpasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { DsboardComponent } from './components/dsboard/dsboard.component';
     MatCardModule,
     ReactiveFormsModule,
     CommonModule,
-    NgbModule
+    NgbModule,
+    IonicModule
   ],
   providers: [
     ConnectionsService,
